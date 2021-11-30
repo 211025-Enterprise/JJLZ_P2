@@ -24,6 +24,6 @@ public class StockWatchlist {
     public double stockPrice;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JsonBackReference
-    public User watcher;
+    @Column(name = "watcher_id")
+    public int watcherId;
 }

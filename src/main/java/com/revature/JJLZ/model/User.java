@@ -2,10 +2,7 @@ package com.revature.JJLZ.model;
 
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -17,7 +14,9 @@ import java.util.List;
 @Setter
 @Table(name = "users")
 public class User {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int userId;
 
     public String firstName;
@@ -33,6 +32,5 @@ public class User {
     @OneToMany(mappedBy = "watcher")
     @JsonManagedReference
     public List<StockWatchlist> userWatchList;
-
 
 }
