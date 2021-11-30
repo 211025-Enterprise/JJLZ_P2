@@ -1,15 +1,14 @@
 package com.revature.JJLZ.model;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -30,6 +29,10 @@ public class User {
     private String password;
     @Column(nullable = false)
     private double balance;
+
+    @OneToMany(mappedBy = "watcher")
+    @JsonManagedReference
+    public List<StockWatchlist> userWatchList;
 
 
 }
