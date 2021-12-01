@@ -8,8 +8,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.io.IOException;
 import java.math.BigDecimal;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 class StockServiceTest {
     @Autowired
@@ -28,5 +26,7 @@ class StockServiceTest {
 
         final BigDecimal percent200dma = stockService.findChangein200MAPercent(stock);
         System.out.println("change in 200 day moving average "+percent200dma+"%");
+
+
     }
 }
