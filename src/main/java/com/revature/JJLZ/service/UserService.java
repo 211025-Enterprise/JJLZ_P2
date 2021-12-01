@@ -3,7 +3,9 @@ package com.revature.JJLZ.service;
 
 import com.revature.JJLZ.model.User;
 import com.revature.JJLZ.repository.UserRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -14,6 +16,7 @@ public class UserService {
     public UserService(UserRepository userRepository){
         this.userRepository = userRepository;
     }
+
     public User createNewUser(User user){
         return userRepository.save(user);
     }

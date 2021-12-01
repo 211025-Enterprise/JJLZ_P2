@@ -29,4 +29,19 @@ public class UserController {
     public User createNewUser(@RequestBody User user){
         return userService.createNewUser(user);
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> validateCredentials(@RequestParam("username") String username,
+                                                 @RequestParam("password") String password){
+        User current = new User();
+        current.setUsername(username);
+        current.setPassword(password);
+
+        if (userService.validate(current)){
+            return ResponseEntity.ok("logged in");
+        }
+        else{
+            return ResponseEntity.ok("invalid credentials");
+        }
+    }
 }

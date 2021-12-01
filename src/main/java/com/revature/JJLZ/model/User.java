@@ -30,7 +30,7 @@ public class User {
     @Column(nullable = false)
     private double balance;
 
-    public List<Stock> holding;
+    //public List<Stock> holding;
 
     @OneToMany(mappedBy = "watcher")
     @JsonManagedReference

@@ -23,7 +23,7 @@ public class StockWatchlist {
     @Column(name = "price")
     public double stockPrice;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @Column(name = "watcher_id")
-    public int watcherId;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JsonBackReference
+    public User watcher;
 }
