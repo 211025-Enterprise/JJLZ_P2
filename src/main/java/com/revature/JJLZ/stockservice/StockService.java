@@ -1,6 +1,9 @@
 package com.revature.JJLZ.stockservice;
+import com.revature.JJLZ.model.Stocks;
+import com.revature.JJLZ.model.User;
 import com.revature.JJLZ.stockmodel.StockWrapper;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 import yahoofinance.YahooFinance;
 
@@ -14,10 +17,12 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @Service
 public class StockService {
-
+//    private User user;
     private final RefreshService refreshService;
 
-
+//    public boolean addToHolder(Stocks stock){
+//        return user.holding.add(stock);
+//    }
     //finds 1 stock
     public StockWrapper findStock(final String ticker){
         try{
