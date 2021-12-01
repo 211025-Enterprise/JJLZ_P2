@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
-@RestControlle
+@RestController
 @RequestMapping(value = "/users")
 public class UserController {
 
