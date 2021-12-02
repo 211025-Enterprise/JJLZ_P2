@@ -1,6 +1,5 @@
 .homepage {
 	background-image: url('/img/homepage-background.jpg');
-	background-color: blue;
 }
 
 .userpage {
@@ -183,7 +182,6 @@
 #header * {
 	padding: 0 1rem;
 }
-
 
 #header #logo-icon {
 	background-color: blue;

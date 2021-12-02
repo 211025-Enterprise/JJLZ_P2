@@ -2,7 +2,11 @@ package com.revature.JJLZ.model;
 
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 
 import javax.persistence.*;
 import java.util.List;
@@ -22,6 +26,7 @@ public class User {
     public String firstName;
 
     public String lastName;
+
     @Column(unique = true)
     public String username;
     @Column(nullable = false)
@@ -33,8 +38,10 @@ public class User {
     @JsonManagedReference
     public List<Stocks> holding;
 
-    @OneToMany(mappedBy = "watcher")
+    @OneToMany(mappedBy = "watcher",
+                                    cascade = {CascadeType.PERSIST,CascadeType.MERGE,
+                                    CascadeType.DETACH, CascadeType.REFRESH})
     @JsonManagedReference
-    public List<StockWatchlist> userWatchList;
+   public List<StockWatchlist> userWatchList;
 
 }

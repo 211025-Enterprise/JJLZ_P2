@@ -1,9 +1,8 @@
 package com.revature.JJLZ.stockservice;
-import com.revature.JJLZ.model.Stocks;
-import com.revature.JJLZ.model.User;
+
 import com.revature.JJLZ.stockmodel.StockWrapper;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+
 import org.springframework.stereotype.Service;
 import yahoofinance.YahooFinance;
 
@@ -23,6 +22,7 @@ public class StockService {
 //    public boolean addToHolder(Stocks stock){
 //        return user.holding.add(stock);
 //    }
+
     //finds 1 stock
     public StockWrapper findStock(final String ticker){
         try{
@@ -53,6 +53,5 @@ public class StockService {
     public BigDecimal findChangein200MAPercent(final StockWrapper stock) throws IOException{
         return stock.getStock().getQuote(refreshService.shouldRefresh(stock)).getChangeFromAvg200InPercent();
     }
-
 
 }

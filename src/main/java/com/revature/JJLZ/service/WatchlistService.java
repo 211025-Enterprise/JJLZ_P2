@@ -9,5 +9,4 @@ import org.springframework.stereotype.Service;
 public class WatchlistService {
     public User user;
     public StockWatchlist watchlist;
-
 }

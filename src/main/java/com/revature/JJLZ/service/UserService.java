@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import org.springframework.stereotype.Service;
+
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @Service
@@ -20,7 +23,9 @@ public class UserService {
     }
 
     public User createNewUser(User user){
-        return userRepository.save(user);
+        user.setUserId(0);
+        userRepository.save(user);
+        return user;
     }
 
     public List<User> getAllUsers(){
@@ -61,4 +66,13 @@ public class UserService {
         System.out.println(user.getBalance());
         //if last of stock remove from list
     }
+    public User update(User user) {
+        userRepository.save(user);
+        return user;
+    }
+
+    public void delete(Integer userId){
+        userRepository.deleteById(userId);
+    }
+
 }

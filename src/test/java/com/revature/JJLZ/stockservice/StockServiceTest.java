@@ -27,6 +27,5 @@ class StockServiceTest {
         final BigDecimal percent200dma = stockService.findChangein200MAPercent(stock);
         System.out.println("change in 200 day moving average "+percent200dma+"%");
 
-
     }
 }
