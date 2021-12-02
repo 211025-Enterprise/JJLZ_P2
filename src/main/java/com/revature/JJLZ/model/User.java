@@ -39,9 +39,8 @@ public class User {
     public List<Stocks> holding;
 
     @OneToMany(mappedBy = "watcher",
-                                    cascade = {CascadeType.PERSIST,CascadeType.MERGE,
-                                    CascadeType.DETACH, CascadeType.REFRESH})
+                                    cascade = CascadeType.ALL)
     @JsonManagedReference
-   public List<StockWatchlist> userWatchList;
+    public List<StockWatchlist> userWatchList;
 
 }

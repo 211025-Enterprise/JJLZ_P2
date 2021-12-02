@@ -17,17 +17,15 @@ import javax.persistence.*;
 @Table(name = "watchlist")
 public class StockWatchlist {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "stock_name")
     public String stockName;
 
-    @Column(name = "price")
-    public double stockPrice;
+//    @Column(name = "price")
+//    public double stockPrice;
 
 
-  @ManyToOne( cascade = {CascadeType.PERSIST,CascadeType.MERGE,
-          CascadeType.DETACH, CascadeType.REFRESH})
-   @JsonBackReference
-   public User watcher;
+    @ManyToOne( cascade = CascadeType.ALL)
+    @JsonBackReference
+    public User watcher;
 
 }
