@@ -5,6 +5,7 @@ package com.revature.JJLZ.controller;
 import com.revature.JJLZ.exception.UserNotFoundException;
 
 import com.revature.JJLZ.model.User;
+import com.revature.JJLZ.repository.UserRepository;
 import com.revature.JJLZ.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,8 @@ public class UserController {
 
     @Autowired
     private UserService userService ;
-
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping
     public ResponseEntity<?> getAllUsers(){
@@ -54,12 +56,15 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<?> validateCredentials(@RequestParam("username") String username,
                                                  @RequestParam("password") String password){
-        User current = new User();
+
+        User current = userRepository.findUserByUsername(username);
         current.setUsername(username);
         current.setPassword(password);
 
         if (userService.validate(current)){
-            return ResponseEntity.ok("logged in");
+            return ResponseEntity.ok("logged in as \n name:"+current.getFirstName() +
+                    "\nlastname: "+current.getLastName()+
+                    "\nHas a whopping amount of $" + current.getBalance());
         }
         else{
             return ResponseEntity.ok("invalid credentials");
