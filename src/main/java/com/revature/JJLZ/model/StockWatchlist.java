@@ -20,10 +20,6 @@ public class StockWatchlist {
     @Column(name = "stock_name")
     public String stockName;
 
-//    @Column(name = "price")
-//    public double stockPrice;
-
-
     @ManyToOne( cascade = CascadeType.ALL)
     @JsonBackReference
     public User watcher;
