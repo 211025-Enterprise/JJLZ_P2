@@ -59,7 +59,7 @@ public class UserController {
         current.setPassword(password);
 
         if (userService.validate(current)){
-            return ResponseEntity.ok("logged in");
+            return ResponseEntity.ok("logged in: " + current.getFirstName() +" "+ current.getLastName());
         }
         else{
             return ResponseEntity.ok("invalid credentials");

@@ -18,7 +18,6 @@ import javax.persistence.*;
 public class Stocks {
     @Id
     public String name;
-    public double price;
     @ManyToOne(cascade = CascadeType.MERGE)
     @JsonBackReference
     public User holder;
