@@ -1,20 +1,9 @@
-.background {
-	background-repeat: no-repeat;
-	background-size: 100vw 100vh;
-	width: 100vw;
-	height: 100vh;
-	z-index: 1;
-	position: fixed;
-	top: 0;
-	left: 0;
-}
-
-#homepage {
+.homepage {
 	background-image: url('/img/homepage-background.jpg');
 	background-color: blue;
 }
 
-#userpage {
+.userpage {
 	background-image: url('/img/user-background.png');
 }
 
@@ -31,6 +20,8 @@
 	z-index: 1;
 	color: black;
 	font-weight: 900;
+	background-repeat: no-repeat;
+	background-size: 100vw 100vh;
 }
 
 #content-wrapper #title {
@@ -69,49 +60,78 @@
 	justify-content: center;
 	align-items: center;
 	flex-flow: column nowrap;
-	padding: 2rem 0 0 0;
+	padding: 0;
+	margin: 0;
+}
+
+#createForm {
+	width: 30rem;
+	height: 22rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column nowrap;
+	padding: 0;
+	margin: 0;
 }
 
 .inputWrapper {
+	width: 100%;
 	white-space: nowrap;
 	margin: 0.5rem;
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 }
 
 .inputWrapper:focus-within {
-	text-shadow: 0 0 0.7rem white, 0 0 0.7rem white, 0 0 0.7rem white;
+	text-shadow: 0 0 1rem white, 0 0 1rem white, 0 0 1rem white, 0 0 1rem white, 0 0 1rem white;
 }
 
-#logInForm input[type=text] {
+#formBackground {
+	background-image: inherit;
+	background-size: 100vw 100vh;
+	background-position: var(--formPos);
+	filter: blur(5px);
+	position: absolute;
+	z-index: -1;
+}
+
+.homepageForm input[type=text] {
 	padding: 4px 8px;
 	margin: 4px 0;
 	box-sizing: border-box;
 	font-weight: 600;
 }
 
-#logInForm input[type=text]:focus {
+.homepageForm input[type=text]:focus {
 	outline: none !important;
 	border: 3px solid black;
 	box-shadow: 0 0 5px black;
 }
 
-#logInForm input[type=password] {
+.homepageForm input[type=password] {
 	padding: 4px 8px;
 	margin: 4px 0;
 	box-sizing: border-box;
 	font-weight: 600;
 }
 
-#logInForm input[type=password]:focus {
+.homepageForm input[type=password]:focus {
 	outline: none !important;
 	border: 3px solid black;
 	box-shadow: 0 0 5px black;
 }
 
-#logInForm label {
+.homepageForm label {
 	font-size: 2rem;
 	margin: 0.5rem;
+}
+
+.homepageForm #formControl {
+	display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: 1fr;
 }
 
 #submit::before {
@@ -122,10 +142,28 @@
 	font-size: 2.5rem;
 	cursor: pointer;
 	margin: 1rem;
+	height: 2.5rem;
+	line-height: 2.5rem;
 }
 
 #submit:hover {
 	text-shadow: 0 0 0.9rem white, 0 0 0.9rem white, 0 0 0.9rem white, 0 0 0.9rem white;
+}
+
+#back::before {
+	content: "Back";
+}
+
+#back {
+	font-size: 1.5rem;
+	cursor: pointer;
+	margin: 1rem;
+	height: 2.5rem;
+	line-height: 2.5rem;
+}
+
+#back:hover {
+	text-shadow: 0 0 0.7rem white, 0 0 0.7rem white, 0 0 0.7rem white;
 }
 
 #header {
