@@ -22,4 +22,7 @@ public class Stocks {
     @ManyToOne(cascade = CascadeType.MERGE)
     @JsonBackReference
     public User holder;
+    public Stocks (User user){
+        this.holder = user;
+    }
 }

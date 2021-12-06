@@ -1,7 +1,7 @@
 package com.revature.JJLZ.stockservice;
 
 
-import com.revature.JJLZ.stockmodel.StockWrapper;
+import com.revature.JJLZ.model.StockWrapper;
 import org.springframework.stereotype.Service;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import java.time.Duration;

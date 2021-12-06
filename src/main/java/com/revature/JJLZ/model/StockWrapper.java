@@ -1,4 +1,4 @@
-package com.revature.JJLZ.stockmodel;
+package com.revature.JJLZ.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

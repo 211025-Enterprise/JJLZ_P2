@@ -1,9 +1,12 @@
 package com.revature.JJLZ.stockservice;
 
-import com.revature.JJLZ.stockmodel.StockWrapper;
+import com.revature.JJLZ.model.Stocks;
+import com.revature.JJLZ.model.User;
+import com.revature.JJLZ.model.StockWrapper;
 import lombok.AllArgsConstructor;
 
 import org.springframework.stereotype.Service;
+import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 
 import java.io.IOException;
@@ -37,6 +40,9 @@ public class StockService {
         return tickers.stream().map(this::findStock).filter(Objects::nonNull).collect(Collectors.toList());
         //iterate through given tickers, map them to a stock(pass ticker through
         //findStock return new stockwrapper then filtered if null and whats left collected to a list
+    }
+    public List<Stock> getAllStocksByUser(User user){
+        return user.getHolding();
     }
 
     //gets price of a stock

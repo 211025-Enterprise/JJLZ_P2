@@ -37,7 +37,7 @@ public class User {
 
     @OneToMany(mappedBy = "holder")
     @JsonManagedReference
-    public List<Stocks> holding;
+    public List<Stock> holding;
 
     @OneToMany(mappedBy = "watcher",
                                     cascade = CascadeType.ALL)

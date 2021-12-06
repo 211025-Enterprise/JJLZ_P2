@@ -1,6 +1,7 @@
 package com.revature.JJLZ.stockservice;
 
-import com.revature.JJLZ.stockmodel.StockWrapper;
+import com.revature.JJLZ.model.StockWrapper;
+import com.revature.JJLZ.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,6 +13,7 @@ import java.math.BigDecimal;
 class StockServiceTest {
     @Autowired
     private StockService stockService;
+
 
     @Test
     void invoke() throws IOException {
