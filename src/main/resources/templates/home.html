@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1" />
+<title>Insert title here</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+	<script src="/post.js"></script>
+    <script src="/get.js"></script>
+</head>
+<body>
+<header style="background-color: aquamarine ; border: black solid; width: auto; height: 70px; text-align:center ; font-size: 30px" ><strong>Home Page</strong></header>
+	<div id="postResultDiv" align="center"></div>
+	<div class="container">
+		<h2>JJLZ FORM</h2>
+		<h2>Create New Account</h2>
+		<form id="userForm">
+
+			<div class="form-group">
+				<label for="firstName">First Name:</label> <input type="text"
+					class="form-control" id="firstName" placeholder="Enter firstName"
+					name="firstName">
+			</div>
+			<div class="form-group">
+				<label for="lastName">Last Name:</label> <input type="text"
+					class="form-control" id="lastName" placeholder="Enter lastName"
+					name="lastName">
+			</div>
+			<div class="form-group">
+				<label for="username">User Name:</label> <input type="text"
+						class="form-control" id="username" placeholder="Enter username"
+						 name="username">
+			</div>
+			<div class="form-group">
+				<label for="password">Password:</label> <input type="text"
+							class="form-control" id="password" placeholder="Enter password"
+								 name="password">
+			</div>
+			<div class="form-group form-check">
+				<label class="form-check-label"> <input
+					class="form-check-input" type="checkbox" name="remember">
+					Remember me
+				</label>
+			</div>
+			<button id="login" type="submit" class="btn btn-primary">Submit</button></br></br>
+		</form>
+
+		<form method="GET" action="login">
+			<button type="submit" class="btn btn-primary">login</button>
+		</form>
+
+		<script src="/login.js" ></script>
+
+		<div class="col-sm-7" style="margin: 20px 0px 20px 0px">
+			<button id="getALlUsers" type="button" class="btn btn-primary">Get All Users</button>
+			<div id="getResultDiv" style="padding: 20px 10px 20px 50px">
+				<ul class="list-group"></ul>
+			</div>
+		</div>
+	</div>
+<footer style="background-color: aquamarine ; border: black solid; width: auto; height: 80px; text-align:center; font-size: 30px" ><strong>Footer</strong></footer>
+</body>
+</html>
