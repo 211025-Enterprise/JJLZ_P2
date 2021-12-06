@@ -61,6 +61,7 @@ public class UserService {
             price = price.setScale(2, RoundingMode.CEILING);
             double stockPrice = price.doubleValue();
             stockPrice *= stock.getQuantity();
+            total += stockPrice;
         }
         return total;
     }
