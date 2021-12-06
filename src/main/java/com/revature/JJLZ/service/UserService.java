@@ -41,31 +41,7 @@ public class UserService {
         return userRepository.findUserByUsername(user.getUsername()).getPassword().equals(user.getPassword());
     }
 
-    //add to list
 
-
-
-    public void buyStock(BigDecimal stockP, int amount,User user){
-        stockP = stockP.setScale(2, RoundingMode.CEILING);
-        double stockPrice = stockP.doubleValue();
-        stockPrice = stockPrice * amount;
-        if (stockPrice <= user.getBalance()) {
-            user.setBalance(user.getBalance()-stockPrice);
-            System.out.println(user.getBalance());
-            //if not have add to list
-        }
-        else{
-            System.out.println("insufficient funds.");
-        }
-    }
-    public void sellStock(BigDecimal stockP, int amount, User user){
-        stockP = stockP.setScale(2, RoundingMode.CEILING);
-        double stockPrice = stockP.doubleValue();
-        stockPrice = stockPrice * amount;
-        user.setBalance(user.getBalance()+stockPrice);
-        System.out.println(user.getBalance());
-        //if last of stock remove from list
-    }
     public User update(User user) {
         userRepository.save(user);
         return user;

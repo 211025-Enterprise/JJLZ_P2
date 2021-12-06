@@ -1,2 +1,3 @@
-package com.revature.JJLZ.controller;public class StocksController {
+package com.revature.JJLZ.controller;
+public class StocksController {
 }

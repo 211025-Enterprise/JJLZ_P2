@@ -1,2 +1,3 @@
-package com.revature.JJLZ.service;public class TransactionService {
+package com.revature.JJLZ.service;
+public class TransactionService {
 }
