@@ -18,4 +18,9 @@ public class StockWrapper {
         lastAccessed = LocalDateTime.now();
     }
 
+    @Override
+    public String toString() {
+        return
+                "stock=" + stock ;
+    }
 }
