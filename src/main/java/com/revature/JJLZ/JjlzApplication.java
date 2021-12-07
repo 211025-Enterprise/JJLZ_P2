@@ -15,14 +15,12 @@ public class JjlzApplication {
 
 	public static void main(String[] args) throws IOException {
 		SpringApplication.run(JjlzApplication.class, args);
-		User me = new User();
-		me.setUsername("me");
-		me.setPassword("me");
-		Scanner sc = new Scanner(System.in);
-		if (sc.nextLine() == "1"){
-			UserService userService = null;
-			System.out.println(userService.totalBalance(me));
+//		User me = new User();
+//		me.setUsername("me");
+//		me.setPassword("me");
+//		Scanner sc = new Scanner(System.in);
+//		if (sc.nextLine() == "1"){
+//			UserService userService = null;
+//			System.out.println(userService.totalBalance(me));
 		}
-	}
-
 }
