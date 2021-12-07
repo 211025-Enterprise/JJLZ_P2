@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class C {
     @Autowired
     private UserService userService;
-    @PostMapping("create")
-    public ResponseEntity<Object> createNewUser(@RequestBody User user) {
+    @PostMapping("cre")
+    public ResponseEntity<Object> createNew(@RequestBody User user) {
         userService.createNewUser(user);
         ServiceResponse<User> response = new ServiceResponse<>("success", user);
         return new ResponseEntity<Object>(response, HttpStatus.OK);
