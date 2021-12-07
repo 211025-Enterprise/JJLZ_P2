@@ -9,11 +9,11 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>zozo</artifactId>
+    <artifactId>Jjlz</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>zozo</name>
-    <description>zozo</description>
+    <name>Jjlz</name>
+    <description>stock paper trading application</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -22,6 +22,10 @@
             <groupId>com.yahoofinance-api</groupId>
             <artifactId>YahooFinanceAPI</artifactId>
             <version>3.15.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>

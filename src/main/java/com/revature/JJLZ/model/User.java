@@ -26,7 +26,7 @@ public class User {
     public String username;
     public String password;
 
-    private double balance;
+    public double balance;
 
     @OneToMany(mappedBy = "holder")
     @JsonManagedReference

@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ZozoApplication {
+public class JjlzApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ZozoApplication.class, args);
+        SpringApplication.run(JjlzApplication.class, args);
     }
 
 }

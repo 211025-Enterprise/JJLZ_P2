@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1"/>
+    <title>Insert title here</title>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+          rel="stylesheet"/>
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="/post.js"></script>
+    <script src="/get.js"></script>
+    <script src="/put.js"></script>
+</head>
+<body>
+<header style="background-color: aquamarine ; border: black solid; width: auto; height: 70px; text-align:center ; font-size: 30px"><strong>User Details</strong></header>
+<br>
+<div id="postResultDiv" align="center"></div>
+<div class="container">
+
+    <form id="userDetailForm">
+
+        <div class="form-group">
+            <label for="balance">Add Balance:</label> <input class="form-control"
+                                                             id="balance" name="balance" placeholder="Add balance"
+                                                             type="text">
+        </div>
+
+        <button id="detail"  class="btn btn-primary"  type="submit">Add Balance</button>
+        </br></br>
+    </form>
+    <script src="/detail.js" ></script>
+
+    <form action="register" method="GET">
+        <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+    <div class="col-sm-7" style="margin: 20px 0px 20px 0px">
+        <button id="getALlUsers" type="button" class="btn btn-primary">Get All Users</button>
+        <div id="getResultDiv" style="padding: 20px 10px 20px 50px">
+            <ul class="list-group"></ul>
+        </div>
+    </div>
+
+</div>
+<footer style="background-color: aquamarine ; border: black solid; width: auto; height: 80px; text-align:center; font-size: 30px">
+    <strong>Footer</strong></footer>
+</body>
+</html>
