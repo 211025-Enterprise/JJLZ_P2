@@ -12,6 +12,6 @@ public class ViewController {
 
 	@GetMapping("/home")
 	public String home() {
-		return "user-home.html";
+		return "userhome.html";
 	}
 }
