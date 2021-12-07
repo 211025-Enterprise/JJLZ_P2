@@ -14,7 +14,6 @@ public class ViewController {
 	@GetMapping("login")
 	public String login() { return "login"; // route login.html
 	}
-
 	@GetMapping("detail")
 	public String detail() {
 		return "detail";

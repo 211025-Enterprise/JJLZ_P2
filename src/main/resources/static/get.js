@@ -17,10 +17,10 @@ GET: $(document).ready(
 							$('#getResultDiv ul').empty();
 							$.each(result.data,
 									function(i, users) {
-										var user = " firstName: " + users.firstName+
-										" lastName: " + users.lastName+
-											" username: " + users.username+
-											"<br>";
+										var user = "<strong>FirstName: " + users.firstName+
+										"<br> LastName: " + users.lastName+
+											"<br> Balance: " + users.balance+"</strong>"
+										+"<br>";
 										$('#getResultDiv .list-group').append(
 												user)
 									});

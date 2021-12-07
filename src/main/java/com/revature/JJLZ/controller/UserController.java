@@ -37,14 +37,6 @@ public class UserController {
         return userService.findUserById(Integer.parseInt(userId));
     }
 
-
-/*
-    @PutMapping
-    public User updateUser(@RequestBody User user) {
-        return userService.update(user);
-    }
-*/
-
     @DeleteMapping("/{userId}")
     public void deleteById(@PathVariable String userId) {
         User theUser = userService.getAllUsers().get(Integer.parseInt(userId));

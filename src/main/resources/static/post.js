@@ -15,7 +15,8 @@ $(document).ready(
 					firstName: $("#firstName").val(),
 					lastName: $("#lastName").val(),
 					username: $("#username").val(),
-					password: $("#password").val()
+					password: $("#password").val(),
+					balance: $("#balance").val()
 				}
 				// DO POST
 				$.ajax({
