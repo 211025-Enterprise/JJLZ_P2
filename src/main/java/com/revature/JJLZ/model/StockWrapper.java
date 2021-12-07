@@ -1,4 +1,4 @@
-package com.revature.JJLZ.stockmodel;
+package com.revature.JJLZ.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,14 +8,19 @@ import yahoofinance.Stock;
 import java.time.LocalDateTime;
 @Getter
 @With
-@AllArgsConstructor
+
 public class StockWrapper {
     private final Stock stock;
-    private final LocalDateTime lastAccessed;
+    //private final LocalDateTime lastAccessed;
 
     public StockWrapper(final Stock stock){
         this.stock = stock;
-        lastAccessed = LocalDateTime.now();
+       // lastAccessed = LocalDateTime.now();
     }
 
+    @Override
+    public String toString() {
+        return 
+                "stock=" + stock ;
+    }
 }

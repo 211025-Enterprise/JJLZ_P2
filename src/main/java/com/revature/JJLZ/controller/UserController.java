@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.HttpStatus;
 
+import java.io.IOException;
+
 
 @RestController
 @RequestMapping("/users")
@@ -25,11 +27,6 @@ public class UserController {
         return ResponseEntity.ok(userService.getAllUsers());
     }
 
-/*    @PostMapping
-    public User createNewUser(@RequestBody User user) {
-        return userService.createNewUser(user);
-    }*/
-
     @GetMapping("/{userId}")
     public User getByUserId(@PathVariable String userId){
 
@@ -37,6 +34,15 @@ public class UserController {
         if ( theUser == null ) // if null will throw exception
             throw new UserNotFoundException("User id not found - " + userId);
             return userService.findUserById(Integer.parseInt(userId));
+    }
+    @GetMapping("/totalvalue")
+    public ResponseEntity<?> getTotalValue(@RequestParam("userId") Integer userId) throws IOException {
+        User richMan = userService.findUserById(userId);
+        System.out.println(richMan.toString());
+        double money = userService.totalBalance(richMan);
+        System.out.println(money);
+        return ResponseEntity.ok(money);
+
     }
     @PutMapping
     public User updateUser(@RequestBody User user){
@@ -52,4 +58,25 @@ public class UserController {
         userService.delete(Integer.parseInt(userId));
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<?> validateCredentials(@RequestParam("username") String username,
+                                                 @RequestParam("password") String password){
+
+        User current = userRepository.findUserByUsername(username);
+        current.setUsername(username);
+        current.setPassword(password);
+
+        if (userService.validate(current)){
+            return ResponseEntity.ok("logged in as \n name:"+current.getFirstName() +
+                    "\nlastname: "+current.getLastName()+
+                    "\nHas a whopping amount of $" + current.getBalance());
+        }
+        else{
+            return ResponseEntity.ok("invalid credentials");
+        }
+    }
+    @PostMapping
+    public User createNewUser(@RequestBody User user) {
+        return userService.createNewUser(user);
+    }
 }
