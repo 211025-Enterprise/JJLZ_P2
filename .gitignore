@@ -57,3 +57,6 @@ build/
 hs_err_pid*
 .idea
 *.iml
+
+#MVN Wrapper
+.mvn*
