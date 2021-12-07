@@ -157,10 +157,6 @@ public class StockService {
         }
     }
 
-//    public boolean validateHolding(Stocks stocks){
-//        //lookup
-//        return stockRepository.findByName(stocks.getName()).getHolder().equals(stocks.getHolder());
-//    }
 
 
 }

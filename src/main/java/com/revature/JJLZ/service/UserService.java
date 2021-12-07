@@ -5,6 +5,7 @@ import com.revature.JJLZ.model.StockWrapper;
 import com.revature.JJLZ.model.Stocks;
 import com.revature.JJLZ.model.User;
 import com.revature.JJLZ.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -13,11 +14,13 @@ import java.math.RoundingMode;
 
 import yahoofinance.Stock;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
 public class UserService {
     private UserRepository userRepository;
+    @Autowired
     private StockService stockService;
 
     public UserService(UserRepository userRepository){
@@ -46,16 +49,26 @@ public class UserService {
 
     public double totalBalance(User user) throws IOException {
         double total = user.getBalance();
-        Stocks stock = new Stocks(user);
+        System.out.println(total);
 //        get list of stocks user is holding
 //        in for loop for each stock, find the quantity and price and multiply
 //        for each price*quantity add the value to total
-        for(Stocks stonk:user.holding){
+        System.out.println("got here");
+        List<Stocks> st;
+        st = stockService.getAllStocksByUser(user.getUserId());
+
+        for(Stocks stonk:st){
+            System.out.println("in loop");
+            System.out.println(stonk.toString());
             BigDecimal price = stockService.findPrice(stonk);
             price = price.setScale(2, RoundingMode.CEILING);
             double stockPrice = price.doubleValue();
-            stockPrice *= stock.getQuantity();
+            System.out.println("stock: "+ stonk+" price: "+ stockPrice);
+            System.out.println("Quantity: "+stonk.getQuantity());
+            stockPrice *= stonk.getQuantity();
+            System.out.println("price*quantity: " +stockPrice);
             total += stockPrice;
+            System.out.println(total);
         }
         return total;
     }

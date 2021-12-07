@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 
 @RestController
 @RequestMapping("/users")
@@ -26,11 +28,6 @@ public class UserController {
         return ResponseEntity.ok(userService.getAllUsers());
     }
 
-    @PostMapping
-    public User createNewUser(@RequestBody User user) {
-        return userService.createNewUser(user);
-    }
-
     @GetMapping("/{userId}")
     public User getByUserId(@PathVariable String userId){
 
@@ -38,6 +35,15 @@ public class UserController {
         if ( theUser == null ) // if null will throw exception
             throw new UserNotFoundException("User id not found - " + userId);
             return userService.findUserById(Integer.parseInt(userId));
+    }
+    @GetMapping("/totalvalue")
+    public ResponseEntity<?> getTotalValue(@RequestParam("userId") Integer userId) throws IOException {
+        User richMan = userService.findUserById(userId);
+        System.out.println(richMan.toString());
+        double money = userService.totalBalance(richMan);
+        System.out.println(money);
+        return ResponseEntity.ok(money);
+
     }
     @PutMapping
     public User updateUser(@RequestBody User user){
@@ -69,5 +75,9 @@ public class UserController {
         else{
             return ResponseEntity.ok("invalid credentials");
         }
+    }
+    @PostMapping
+    public User createNewUser(@RequestBody User user) {
+        return userService.createNewUser(user);
     }
 }
