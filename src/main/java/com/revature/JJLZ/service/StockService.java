@@ -6,7 +6,6 @@ import com.revature.JJLZ.model.User;
 import com.revature.JJLZ.repository.StockRepository;
 
 import com.revature.JJLZ.repository.UserRepository;
-import javafx.scene.canvas.GraphicsContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import yahoofinance.Stock;
