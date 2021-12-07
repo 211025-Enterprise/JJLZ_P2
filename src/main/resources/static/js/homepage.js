@@ -1,7 +1,11 @@
-document.getElementById('create').onclick = function() {createForm()}
-document.getElementById('logIn').onclick = function() {logInForm()}
+var contentWrapper = null
 
-var contentWrapper = document.getElementById('content-wrapper')
+window.addEventListener("load", function() {
+	contentWrapper = document.getElementById('content-wrapper')
+
+	document.getElementById('create').onclick = function() {createForm()}
+	document.getElementById('logIn').onclick = function() {logInForm()}
+})
 
 function createForm() {
 	removeAllChildNodes(contentWrapper)
@@ -113,7 +117,7 @@ function createUser() {
 			} else {
 
 			}
-		}
+		},
 		error: function (e) {
 
 		}
@@ -138,7 +142,7 @@ function logIn() {
 			} else {
 
 			}
-		}
+		},
 		error: function (e) {
 
 		}
