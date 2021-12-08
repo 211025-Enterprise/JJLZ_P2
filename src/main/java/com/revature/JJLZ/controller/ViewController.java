@@ -18,4 +18,15 @@ public class ViewController {
 	public String detail() {
 		return "detail";
 	} // route detail.html
+
+
+	@GetMapping("/")
+	public String welcome() {
+		return "homepage.html";
+	}
+
+	@GetMapping("/home")
+	public String home() {
+		return "userhome.html";
+	}
 }
