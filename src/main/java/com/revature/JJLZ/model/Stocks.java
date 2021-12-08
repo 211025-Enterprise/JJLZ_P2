@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import yahoofinance.Stock;
 
 
 import javax.persistence.*;
@@ -22,4 +23,7 @@ public class Stocks {
     @ManyToOne(cascade = CascadeType.MERGE)
     @JsonBackReference
     public User holder;
+
+    public Stocks(Stock stock) {
+    }
 }
