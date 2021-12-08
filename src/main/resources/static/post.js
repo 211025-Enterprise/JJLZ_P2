@@ -28,9 +28,8 @@ $(document).ready(
 					success: function (result) {
 						if (result.status == "success") {
 							$("#postResultDiv").html(
-								" " + result.data.firstName +
-								" Post Successfully! <br>" +
-								"---> Congrats !!" + "</p>");
+								"<h4>" + result.data.firstName +
+								" You Registered Successfully!<h4>");
 						} else {
 							$("#postResultDiv").html("<strong>Error</strong>");
 						}
@@ -69,8 +68,8 @@ $(document).ready(
 					success: function (result) {
 						if (result.status == "success") {
 							$("#postResultDiv").html("<strong>"+
-								" " + result.data.username +
-								" you logged in Successfully! <br>" + "</p>");
+								"<h4>" + result.data.username +
+								" you logged in Successfully!<h4>");
 						} else {
 							$("#postResultDiv").html("<strong>Error</strong>");
 						}

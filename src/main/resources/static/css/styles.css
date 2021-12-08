@@ -1,3 +1,14 @@
+body,html{background: url('/img/homepage-background.jpg') no-repeat   center center fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;}
+.dropdown {
+	position: relative;
+	display: inline-block;
+	user-select: none;
+}
+
 .homepage {
 	background-image: url('/img/homepage-background.jpg');
 }
@@ -214,11 +225,6 @@
 	color: white;
 }
 
-.dropdown {
-	position: relative;
-	display: inline-block;
-	user-select: none;
-}
 
 .dropdown-content {
 	display: none;
