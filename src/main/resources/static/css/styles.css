@@ -30,6 +30,32 @@
 	cursor: default;
 }
 
+p[id^='register-'] {
+	font-size: 3rem;
+	margin: 0.5rem;
+	cursor: default;
+	text-shadow: 0 0 1rem white, 0 0 1rem white, 0 0 1rem white, 0 0 1rem white, 0 0 1rem white;
+}
+
+#register-success::before {
+	content: "Account created successfully!";
+}
+
+#register-fail::before {
+	content: "Failed to register";
+}
+
+#login-fail {
+	font-size: 3rem;
+	margin: 0.5rem;
+	cursor: default;
+	text-shadow: 0 0 1rem white, 0 0 1rem white, 0 0 1rem white, 0 0 1rem white, 0 0 1rem white;
+}
+
+#login-fail::before {
+	content: "Log-In failed";
+}
+
 #content-wrapper #create,#logIn {
 	font-size: 3rem;
 	margin: 0.1rem;

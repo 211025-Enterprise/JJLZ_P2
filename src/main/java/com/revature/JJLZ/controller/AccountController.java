@@ -43,7 +43,23 @@ public class AccountController {
 			}
 			return ResponseEntity.status(HttpStatus.OK).body(String.valueOf(userService.totalBalance(u)));
 		} catch (Exception e) {
-			return ResponseEntity.ok("Failed to fetch");
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).body("invalid");
+		}
+	}
+
+	@PostMapping("fullname")
+	public ResponseEntity<String> getFullName(@RequestHeader (name="Authorization") String token) {
+		try {
+			User u = jwtHandler.parseToken(token);
+			if (u == null) {
+				throw new UserNotFoundException("bad token");
+			}
+			if (!userService.validate(u)) {
+				throw new UserNotFoundException("good token");
+			}
+			return ResponseEntity.status(HttpStatus.OK).body(userService.getFullName(u));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).body("invalid");
 		}
 	}
 
