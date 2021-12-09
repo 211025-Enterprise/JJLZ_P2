@@ -46,6 +46,9 @@ public class UserService {
         return userRepository.findUserByUsername(user.getUsername()).getPassword().equals(user.getPassword());
     }
 
+	public User getUserByUsername(User user) {
+		return userRepository.findUserByUsername(user.getUsername());
+	}
 
     public double totalBalance(User user) throws IOException {
         double total = user.getBalance();

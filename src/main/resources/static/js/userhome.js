@@ -1,5 +1,19 @@
 window.addEventListener("load", function() {
 	document.getElementById('settingsBtn').onclick = function() {showSettings()}
+	var totalValue = -1;
+	$.ajax({
+		type: "POST",
+		contentType: "application/json",
+		url: "totalvalue",
+		headers: { 'Authorization': window.localStorage.getItem("accountToken") },
+		dataType: 'text',
+		success: function (result) {
+			totalValue = result
+			console.log(totalValue)
+                },
+                error: function (e) {
+                }
+        })
 })
 
 function showSettings() {

@@ -113,7 +113,7 @@ function createUser() {
 		dataType: 'json',
 		success: function (result) {
 			if (result.status == "success") {
-
+				console.log("created user")
 			} else {
 
 			}
@@ -135,16 +135,16 @@ function logIn() {
 		contentType: "application/json",
 		url: "logged",
 		data: JSON.stringify(formData),
-		dataType: 'json',
+		dataType: 'text',
 		success: function (result) {
-			if (result.status == "success") {
-
+			if (result != "invalid") {
+				window.localStorage.setItem("accountToken", result)
+				window.location.replace("http://krakenmeister.com:8080/home")
 			} else {
-
+				console.log("login failed")
 			}
 		},
 		error: function (e) {
-
 		}
 	})
 }
