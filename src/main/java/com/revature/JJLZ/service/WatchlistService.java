@@ -2,10 +2,7 @@ package com.revature.JJLZ.service;
 
 
 import com.revature.JJLZ.model.StockWatchlist;
-import com.revature.JJLZ.model.StockWatchlist;
-import com.revature.JJLZ.model.StockWatchlist;
 import com.revature.JJLZ.model.User;
-import com.revature.JJLZ.repository.StockRepository;
 import com.revature.JJLZ.repository.UserRepository;
 import com.revature.JJLZ.repository.WatchlistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,7 +87,6 @@ public class WatchlistService {
       
 
     }
-
 
 
 }

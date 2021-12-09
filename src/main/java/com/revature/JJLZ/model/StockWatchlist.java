@@ -40,4 +40,5 @@ public class StockWatchlist {
                 ", watcher=" + watcher +
                 '}';
     }
+
 }
