@@ -155,6 +155,15 @@ public class StockService {
             }
         }
     }
+    public List<Stocks> recommendedList(){
+        List<Stocks> recom = null;
+        recom.add(findStock("AMZN"));
+        recom.add(findStock("ROKU"));
+        recom.add(findStock("SFIX"));
+        recom.add(findStock("DARE"));
+        recom.add(findStock("TRUP"));
+        return recom;
+    }
 
 
 

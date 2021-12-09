@@ -30,11 +30,10 @@ public class StocksController {
         return ResponseEntity.ok(stockService.getAllStocksByUser(userId));
     }
 
-    @PostMapping
-    public User createNewUser(@RequestBody User user) {
-        return userService.createNewUser(user);
-    }
-
+// BUY
+//    ENTER THE NAME OF STOCK YOU WANT TO BUY
+//    ENTER THE AMOUNT
+//    userId= logged in users id
     @PostMapping("/buy")
     public ResponseEntity<?> buyStocks(@RequestParam("stockname") String stockname, @RequestParam("amount") Integer amount,
                                           @RequestParam("userId") Integer userId) throws IOException {
