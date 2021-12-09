@@ -46,14 +46,15 @@ public class UserService {
         return userRepository.findUserByUsername(user.getUsername()).getPassword().equals(user.getPassword());
     }
 
+	public User getUserByUsername(User user) {
+		return userRepository.findUserByUsername(user.getUsername());
+	}
 
     public double totalBalance(User user) throws IOException {
         double total = user.getBalance();
-        System.out.println(total);
 //        get list of stocks user is holding
 //        in for loop for each stock, find the quantity and price and multiply
 //        for each price*quantity add the value to total
-        System.out.println("got here");
         List<Stocks> st;
         st = stockService.getAllStocksByUser(user.getUserId());
 
@@ -87,6 +88,14 @@ public class UserService {
     5.2. add price*quantity sold to balance
     6. logout
      */
+
+	public String getFullName(User user) {
+		StringBuffer s = new StringBuffer();
+		s.append(userRepository.findUserByUsername(user.getUsername()).getFirstName());
+		s.append(" ");
+		s.append(userRepository.findUserByUsername(user.getUsername()).getLastName());
+		return s.toString();
+	}
 
     public User update(User user) {
         userRepository.save(user);

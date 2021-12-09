@@ -113,13 +113,25 @@ function createUser() {
 		dataType: 'json',
 		success: function (result) {
 			if (result.status == "success") {
-
+				removeAllChildNodes(contentWrapper)
+				newElement('p', 'title', contentWrapper)
+				newElement('p', 'register-success', contentWrapper)
+				newElement('p', 'back', contentWrapper)
+				document.getElementById('back').onclick = function() {goHome()}
 			} else {
-
+				removeAllChildNodes(contentWrapper)
+				newElement('p', 'title', contentWrapper)
+				newElement('p', 'register-fail', contentWrapper)
+				newElement('p', 'back', contentWrapper)
+				document.getElementById('back').onclick = function() {goHome()}
 			}
 		},
 		error: function (e) {
-
+			removeAllChildNodes(contentWrapper)
+			newElement('p', 'title', contentWrapper)
+			newElement('p', 'register-fail', contentWrapper)
+			newElement('p', 'back', contentWrapper)
+			document.getElementById('back').onclick = function() {goHome()}
 		}
 	})
 }
@@ -135,16 +147,25 @@ function logIn() {
 		contentType: "application/json",
 		url: "logged",
 		data: JSON.stringify(formData),
-		dataType: 'json',
+		dataType: 'text',
 		success: function (result) {
-			if (result.status == "success") {
-
+			if (result != "invalid") {
+				window.localStorage.setItem("accountToken", result)
+				window.location.replace("http://krakenmeister.com:8080/home")
 			} else {
-
+				removeAllChildNodes(contentWrapper)
+				newElement('p', 'title', contentWrapper)
+				newElement('p', 'login-fail', contentWrapper)
+				newElement('p', 'back', contentWrapper)
+				document.getElementById('back').onclick = function() {goHome()}
 			}
 		},
 		error: function (e) {
-
+			removeAllChildNodes(contentWrapper)
+			newElement('p', 'title', contentWrapper)
+			newElement('p', 'login-fail', contentWrapper)
+			newElement('p', 'back', contentWrapper)
+			document.getElementById('back').onclick = function() {goHome()}
 		}
 	})
 }
