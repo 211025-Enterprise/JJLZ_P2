@@ -1,15 +1,27 @@
 package com.revature.JJLZ.service;
 
+
+import com.revature.JJLZ.model.StockWrapper;
+import com.revature.JJLZ.model.Stocks;
 import com.revature.JJLZ.model.User;
 import com.revature.JJLZ.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+
+import yahoofinance.Stock;
+
+import java.util.Arrays;
 import java.util.List;
 
 @Service
 public class UserService {
     private UserRepository userRepository;
+    @Autowired
+    private StockService stockService;
 
     public UserService(UserRepository userRepository){
         this.userRepository = userRepository;
@@ -19,14 +31,6 @@ public class UserService {
         user.setUserId(0);
         userRepository.save(user);
         return user;
-    }
-    public User update(User user) {
-        userRepository.save(user);
-        return user;
-    }
-
-    public void delete(Integer userId){
-        userRepository.deleteById(userId);
     }
 
     public List<User> getAllUsers(){
@@ -43,26 +47,54 @@ public class UserService {
     }
 
 
-//*****************************************************************************************
-    public void buyStock(BigDecimal stockP, int amount,User user){
-        stockP = stockP.setScale(2, RoundingMode.CEILING);
-        double stockPrice = stockP.doubleValue();
-        stockPrice = stockPrice * amount;
-        if (stockPrice <= user.getBalance()) {
-            user.setBalance(user.getBalance()-stockPrice);
-            System.out.println(user.getBalance());
-            //if not have add to list
+    public double totalBalance(User user) throws IOException {
+        double total = user.getBalance();
+        System.out.println(total);
+//        get list of stocks user is holding
+//        in for loop for each stock, find the quantity and price and multiply
+//        for each price*quantity add the value to total
+        System.out.println("got here");
+        List<Stocks> st;
+        st = stockService.getAllStocksByUser(user.getUserId());
+
+        for(Stocks stonk:st){
+            System.out.println("in loop");
+            System.out.println(stonk.toString());
+            BigDecimal price = stockService.findPrice(stonk);
+            price = price.setScale(2, RoundingMode.CEILING);
+            double stockPrice = price.doubleValue();
+            System.out.println("stock: "+ stonk+" price: "+ stockPrice);
+            System.out.println("Quantity: "+stonk.getQuantity());
+            stockPrice *= stonk.getQuantity();
+            System.out.println("price*quantity: " +stockPrice);
+            total += stockPrice;
+            System.out.println(total);
         }
-        else{
-            System.out.println("insufficient funds.");
-        }
+        return total;
     }
-    public void sellStock(BigDecimal stockP, int amount, User user){
-        stockP = stockP.setScale(2, RoundingMode.CEILING);
-        double stockPrice = stockP.doubleValue();
-        stockPrice = stockPrice * amount;
-        user.setBalance(user.getBalance()+stockPrice);
-        System.out.println(user.getBalance());
-        //if last of stock remove from list
+    /* display user firstname and lastname
+    1. view total balance/value
+    2. view current stocks user has(null if new account)
+    3. search for stocks(already held or new) type in ticker name find the rest of the info
+        3.1. name:
+             price:
+             percentfortheday: increase/decrease
+    4. buy stocks
+    4.1. if not have stock, add to holding list
+    4.2. subtract value of stock*quantity from balance
+    5. sell stocks
+    5.1. remove quantity or the stock from the list of holding
+    5.2. add price*quantity sold to balance
+    6. logout
+     */
+
+    public User update(User user) {
+        userRepository.save(user);
+        return user;
     }
+
+    public void delete(Integer userId){
+        userRepository.deleteById(userId);
+    }
+
 }

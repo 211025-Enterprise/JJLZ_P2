@@ -21,12 +21,12 @@ public class ViewController {
 
 
 	@GetMapping("/")
-	public String welcome() {
-		return "homepage.html";
+	public String welcome() { 
+		return "homepage";
 	}
 
 	@GetMapping("/home")
 	public String home() {
-		return "userhome.html";
+		return "userhome";
 	}
 }

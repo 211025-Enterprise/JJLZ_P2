@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="ISO-8859-1" />
     <title>Insert title here</title>
@@ -29,7 +29,9 @@
 <div class="container">
     <h1 class="form-check-label text-white">JJLZ</h1><br>
     <h2 class="form-check-label text-white">Login</h2>
-    <form id="loginForm">
+    <!--<form:form action="${pageContext.request.contextPath}/authenticateTheUser method="POST id="loginForm">-->
+  <!--<form id="loginForm" action="login" method="POST">-->
+    <form id="loginForm" >
 
 
         <div class="form-group">
@@ -51,6 +53,7 @@
         </div>
         <button id="login" type="submit" class="btn btn-primary">Login</button></br></br>
     </form>
+  <!-- </form:form>-->
     <script src="login" ></script>
     <form method="GET" action="detail">
         <button type="submit" class="btn btn-primary">detail</button></br></br>

@@ -20,10 +20,22 @@ public class Stocks {
     @Id
     public String name;
     public int quantity;
+
     @ManyToOne(cascade = CascadeType.MERGE)
     @JsonBackReference
     public User holder;
+    public Stocks(Stock stock){
+        name = stock.getSymbol();
+    }
+    public Stocks (User user){
+        this.holder = user;
+    }
 
-    public Stocks(Stock stock) {
+    @Override
+    public String toString() {
+        return  "name='" + name + '\'' +
+                ", quantity=" + quantity +
+                ", holder=" + holder +
+                '}';
     }
 }
