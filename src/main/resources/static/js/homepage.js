@@ -22,6 +22,7 @@ function createForm() {
 	newElement('p', 'back', formControl)
 	newElement('p', 'submit', formControl)
 	newElement('p', 'spacer', formControl)
+	document.getElementById('submit').innerHTML = "Register"
 	document.getElementById('back').onclick = function() {goHome()}
 	document.getElementById('submit').onclick = function() {createUser()}
 
@@ -42,6 +43,7 @@ function logInForm() {
 	newElement('p', 'back', formControl)
 	newElement('p', 'submit', formControl)
 	newElement('p', 'spacer', formControl)
+	document.getElementById('submit').innerHTML = "Log In"
 	document.getElementById('back').onclick = function() {goHome()}
 	document.getElementById('submit').onclick = function() {logIn()}
 
