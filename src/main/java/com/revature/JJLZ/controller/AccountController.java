@@ -3,6 +3,8 @@ package com.revature.JJLZ.controller;
 import com.revature.JJLZ.model.ServiceResponse;
 import com.revature.JJLZ.model.User;
 import com.revature.JJLZ.service.UserService;
+import com.revature.JJLZ.service.StockService;
+import com.revature.JJLZ.service.WatchlistService;
 import com.revature.JJLZ.util.JwtUtil;
 import com.revature.JJLZ.exception.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,12 @@ import io.jsonwebtoken.*;
 public class AccountController {
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private StockService stockService;
+
+	@Autowired
+	private WatchlistService watchlistService;
 
 	@Autowired
 	private JwtUtil jwtHandler;
@@ -58,6 +66,39 @@ public class AccountController {
 				throw new UserNotFoundException("good token");
 			}
 			return ResponseEntity.status(HttpStatus.OK).body(userService.getFullName(u));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).body("invalid");
+		}
+	}
+
+	@PostMapping("stocklist")
+	public ResponseEntity<?> getStockList(@RequestHeader (name="Authorization") String token) {
+		try {
+			User u = jwtHandler.parseToken(token);
+			if (u == null) {
+				throw new UserNotFoundException("bad token");
+			}
+			if (!userService.validate(u)) {
+				throw new UserNotFoundException("good token");
+			}
+			return ResponseEntity.status(HttpStatus.OK).body(stockService.getAllStocksByUser(u.getUserId()));
+		} catch (Exception e) {
+			System.out.println("exception");
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).body("invalid");
+		}
+	}
+
+	@PostMapping("watchlist")
+	public ResponseEntity<?> getWatchList(@RequestHeader (name="Authorization") String token) {
+		try {
+			User u = jwtHandler.parseToken(token);
+			if (u == null) {
+				throw new UserNotFoundException("bad token");
+			}
+			if (!userService.validate(u)) {
+				throw new UserNotFoundException("good token");
+			}
+			return ResponseEntity.status(HttpStatus.OK).body(watchlistService.getAllStocksByWatcher(u.getUserId()));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.FORBIDDEN).body("invalid");
 		}

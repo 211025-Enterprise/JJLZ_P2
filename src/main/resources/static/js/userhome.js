@@ -35,6 +35,36 @@ $.ajax({
 	}
 })
 
+$.ajax({
+	type: "POST",
+	contentType: "application/json",
+	url: "stocklist",
+	headers: { 'Authorization': window.localStorage.getItem("accountToken") },
+	dataType: 'text',
+	success: function (result) {
+		console.log(result)
+		console.log(JSON.parse(result))
+	},
+	error: function (e) {
+		logOut()
+	}
+})
+
+$.ajax({
+	type: "POST",
+	contentType: "application/json",
+	url: "watchlist",
+	headers: { 'Authorization': window.localStorage.getItem("accountToken") },
+	dataType: 'text',
+	success: function (result) {
+		console.log(result)
+		console.log(JSON.parse(result))
+	},
+	error: function (e) {
+		logOut()
+	}
+})
+
 window.addEventListener("load", function() {
 	document.getElementById('settingsBtn').onclick = function() {showSettings()}
 	document.getElementById('logOutBtn').onclick = function() {logOut()}
