@@ -5,6 +5,7 @@ import com.revature.JJLZ.model.User;
 import com.revature.JJLZ.model.ServiceResponse;
 import com.revature.JJLZ.repository.UserRepository;
 import com.revature.JJLZ.service.UserService;
+import com.revature.JJLZ.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +22,10 @@ public class UserController {
     private UserService userService ;
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private JwtUtil jwtHandler;
+
 
     @GetMapping
     public ResponseEntity<?> getAllUsers(){
@@ -78,5 +83,38 @@ public class UserController {
     @PostMapping
     public User createNewUser(@RequestBody User user) {
         return userService.createNewUser(user);
+    }
+
+    @PostMapping("/deposit")
+    public ResponseEntity<?> makeDeposit(@RequestHeader (name="Authorization") String token, @RequestParam ("amount") Integer amount) {
+        try {
+            User u = jwtHandler.parseToken(token);
+            if (u == null) {
+                throw new UserNotFoundException("bad authentication");
+            }
+            if (!userService.validate(u)) {
+                throw new UserNotFoundException("good token");
+            }
+            userService.deposit(u, amount);
+            return ResponseEntity.ok(200);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("invalid");
+        }
+    }
+    @PostMapping("/withdraw")
+    public ResponseEntity<?> makeWithdrawal(@RequestHeader (name="Authorization") String token, @RequestParam ("amount") Integer amount) {
+        try {
+            User u = jwtHandler.parseToken(token);
+            if (u == null) {
+                throw new UserNotFoundException("bad authentication");
+            }
+            if (!userService.validate(u)) {
+                throw new UserNotFoundException("good token");
+            }
+            userService.withdraw(u, amount);
+            return ResponseEntity.ok(200);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("invalid");
+        }
     }
 }

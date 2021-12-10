@@ -17,7 +17,7 @@ import javax.persistence.*;
 @Getter
 @Table(name = "watchlist")
 public class StockWatchlist {
-
+    @Id
     @Column(name = "stock_name")
     public String stockName;
 

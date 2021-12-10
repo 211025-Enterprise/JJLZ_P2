@@ -106,4 +106,15 @@ public class UserService {
         userRepository.deleteById(userId);
     }
 
+    public void deposit(User user, int amount) {
+        if (amount > 0) {
+            user.setBalance(user.getBalance() + amount);
+        }
+    }
+    public void withdraw(User user, int amount){
+        if (amount > 0 && amount <= user.getBalance()){
+            user.setBalance(user.getBalance()-amount);
+        }
+    }
+
 }
