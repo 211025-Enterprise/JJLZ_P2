@@ -30,7 +30,11 @@ public class WatchlistController {
 
         return ResponseEntity.ok(watchlistService.getAllStocksByWatcher(userId));
     }
+    @GetMapping
+    public ResponseEntity<?> getAllWatchedStocksByUser(){
 
+        return ResponseEntity.ok(watchlistService.getAllStocksByWatcher(1));
+    }
     @PostMapping("/addtowatchlist")
     public ResponseEntity<?> addStockstoWatchlist(@RequestParam("stockname") String stockname, @RequestParam("userId") Integer userId){
         watchlistService.addStocktoWatchlist(stockname,userService.findUserById(userId));
@@ -43,9 +47,4 @@ public class WatchlistController {
         watchlistService.removeStocksFromWatchlist(stockname, userService.findUserById(userId));
         return ResponseEntity.ok(200);
     }
-
-
-
-
-
     }

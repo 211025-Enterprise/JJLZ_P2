@@ -22,7 +22,6 @@ public class AccountController {
             return ResponseEntity.ok("invalid credentials");
         }
     }
-
     @PostMapping("createUser")
     public ResponseEntity<Object> createNewUser(@RequestBody User user) {
         userService.createNewUser(user);

@@ -51,7 +51,9 @@ public class WatchlistService {
     public List<StockWatchlist> getAllStocksByWatcher(Integer userId){
         return watchlistRepository.findAllByWatcher_UserId(userId);
     }
-
+    public List<StockWatchlist> getAllStocksByWatcher(){
+        return watchlistRepository.findAllByWatcher_UserId(1);
+    }
     public BigDecimal findPrice(final StockWatchlist stock) throws IOException {
         return getStockByName(stock.getStockName()).getQuote().getPrice();
     }

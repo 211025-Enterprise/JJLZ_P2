@@ -29,4 +29,9 @@ public class ViewController {
 	public String home() {
 		return "userhome";
 	}
+
+	@GetMapping("/watchList")
+	public String watchList() {
+		return "watchList";
+	}
 }
