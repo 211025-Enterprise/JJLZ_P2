@@ -9,6 +9,7 @@ import FooterComponent from './FooterComponent.jsx'
 import LogoutComponent from './LogoutComponent.jsx'
 import WelcomeComponent from './WelcomeComponent.jsx'
 import RegistrationComponent from './RegistrationComponent.jsx'
+//import SearchBar from './SearchBar.jsx'
 
 class TodoApp extends Component {
     render() {
@@ -21,6 +22,7 @@ class TodoApp extends Component {
                             <Route path="/" exact component={LoginComponent}/>
                             <Route path="/register" component={RegistrationComponent}/>
                             <Route path="/login" component={LoginComponent}/>
+                            {/* <Route path="/login" component={SearchBar}/>                          */}
                             <AuthenticatedRoute path="/welcome/:name" component={WelcomeComponent}/>
                             <AuthenticatedRoute path="/todos" component={WatchListComponent}/>
                             <AuthenticatedRoute path="/logout" component={LogoutComponent}/>

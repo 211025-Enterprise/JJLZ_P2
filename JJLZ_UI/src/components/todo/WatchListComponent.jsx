@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import DataService from '../../api/todo/DataService.js'
+import SearchBar  from './SearchBar.jsx'
+
 class WatchListComponent extends Component {
     constructor(props){
         super(props)
@@ -17,6 +19,7 @@ class WatchListComponent extends Component {
         return (
             <div>
                  <h1>Watch List</h1>
+                  <SearchBar/> 
                  <div className="container">
                     <table className="table">
                         <thead>
@@ -45,4 +48,20 @@ class WatchListComponent extends Component {
     }
 }
 
+// function SearchBar(){
+
+//     return (<form action="/welcome/name" method="get">
+//     <label htmlFor="header-search">
+//         <span className="visually-hidden">Search Stock Name</span>
+//     </label>
+//     <input
+//         type="text"
+//         id="header-search"
+//         placeholder="Search blog posts"
+//         name="s" 
+//     />
+//     <button type="submit">Search</button>
+//     </form>)
+    
+//     }
 export default WatchListComponent

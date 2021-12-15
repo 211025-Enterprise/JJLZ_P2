@@ -6,12 +6,12 @@ class WelcomeComponent extends Component {
         return (
             <>
                 <h1>Welcome To JJLZ!</h1>
-                <div className="container">
+                <div className="container">    
                 Welcome {this.props.match.params.name}. You can manage your todos <Link to="/todos">Watch List</Link>.
+               
                 </div>
             </>
         )        
     }
 }
-
 export default WelcomeComponent
