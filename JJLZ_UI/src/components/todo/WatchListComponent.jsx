@@ -1,14 +1,14 @@
 import React, {Component} from 'react'
-
-class ListTodosComponent extends Component {
+import DataService from '../../api/todo/DataService.js'
+class WatchListComponent extends Component {
     constructor(props){
         super(props)
         this.state = {
             todos : 
             [
-             {id: 1, description : 'Amazon',price: '$5000' , done:false, targetDate: new Date()},
-             {id: 2, description : 'Home Depo',price: '$5000' , done:false, targetDate: new Date()},
-             {id: 3, description : 'Revature',price: '$5000' , done:false, targetDate: new Date()}
+             {id: 1, stockname : 'Amazon',price: '$700' , targetDate: new Date()},
+             {id: 2, stockname : 'Home Depo',price: '$300' , targetDate: new Date()},
+             {id: 3, stockname : 'Revature',price: '$400' , targetDate: new Date()}
             ]
         }
     }
@@ -23,8 +23,7 @@ class ListTodosComponent extends Component {
                             <tr>
                                 <th>Stock Name</th>
                                 <th>Price</th>
-                                <th>Target Date</th>
-                                <th>IsCompleted?</th>
+                                <th>Target Date</th>                   
                             </tr>
                         </thead>
                         <tbody>
@@ -32,9 +31,8 @@ class ListTodosComponent extends Component {
                             this.state.todos.map (
                                 todo =>
                                     <tr key={todo.id}>
-                                        <td>{todo.description}</td>
+                                        <td>{todo.stockname}</td>
                                         <td>{todo.price}</td>
-                                        <td>{todo.done.toString()}</td>
                                         <td>{todo.targetDate.toString()}</td>
                                     </tr>
                             )
@@ -47,4 +45,4 @@ class ListTodosComponent extends Component {
     }
 }
 
-export default ListTodosComponent
+export default WatchListComponent

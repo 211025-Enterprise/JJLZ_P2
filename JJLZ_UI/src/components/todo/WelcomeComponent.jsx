@@ -14,5 +14,4 @@ class WelcomeComponent extends Component {
     }
 }
 
-
 export default WelcomeComponent
