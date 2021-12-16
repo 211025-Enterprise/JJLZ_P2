@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import DataService from '../../api/todo/DataService.js'
+//import DataService from '../../api/todo/DataService.js'
 import SearchBar  from './SearchBar.jsx'
 
 class WatchListComponent extends Component {
