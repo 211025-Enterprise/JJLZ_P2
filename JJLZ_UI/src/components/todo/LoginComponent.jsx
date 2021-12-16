@@ -44,8 +44,8 @@ class LoginComponent extends Component {
            }).catch(() => 
            alert("User not exsit"),  
             this.refreshPage()
-           )      
-           this.props.history.push(`/welcome/${this.state.username}`)    
+           )
+           this.props.history.push(`/welcome/${this.state.username}`)                 
     }
      refreshPage() {
         window.location.reload(false);
