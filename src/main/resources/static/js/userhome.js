@@ -1,6 +1,31 @@
 var totalValue
 var fullName
 
+getStockHistory('AMZN', (stockhistory) => {
+	console.log(stockhistory)
+	new Chart('stockChart', {
+		type: "line",
+		data: {
+			labels: stockhistory['AMZN']['timestamp'],
+			datasets: [{
+				fill: false,
+				lineTension: 0,
+				backgroundColor: "rgba(0,0,255,1.0)",
+				borderColor: "rgba(0,0,255,0.1)",
+				data: stockhistory['AMZN']['close']
+			}]
+		},
+		options: {
+			legend: {
+				display: false
+			},
+			scales: {
+				yAxes: [{ticks: {min: 3400, max: 3500}}]
+			}
+		}
+	})
+})
+
 $.ajax({
 	type: "POST",
 	contentType: "application/json",
@@ -42,8 +67,7 @@ $.ajax({
 	headers: { 'Authorization': window.localStorage.getItem("accountToken") },
 	dataType: 'text',
 	success: function (result) {
-		console.log(result)
-		console.log(JSON.parse(result))
+		var stocklist = JSON.parse(result)
 	},
 	error: function (e) {
 		logOut()
@@ -57,8 +81,7 @@ $.ajax({
 	headers: { 'Authorization': window.localStorage.getItem("accountToken") },
 	dataType: 'text',
 	success: function (result) {
-		console.log(result)
-		console.log(JSON.parse(result))
+		var watchlist = JSON.parse(result)
 	},
 	error: function (e) {
 		logOut()
@@ -73,6 +96,16 @@ window.addEventListener("load", function() {
 	}
 	if (totalValue) {
 		document.getElementById('accountsummary').innerHTML = "Net Worth: $" + totalValue
+	}
+	document.getElementById('buyBtn').onclick = function () {
+		buyStock('AMZN', 1);
+		getTotalValue().then(function(result) {
+			document.getElementById('accountsummary').innerHTML = "Net Worth: $" + result;
+		})
+		getStocklist().then(function(result) {
+			var stocklist = JSON.parse(result)
+			console.log(stocklist)
+		})
 	}
 })
 

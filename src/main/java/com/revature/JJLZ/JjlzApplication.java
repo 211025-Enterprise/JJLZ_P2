@@ -2,12 +2,19 @@ package com.revature.JJLZ;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import tech.tablesaw.api.Table;
-import tech.tablesaw.io.csv.CsvReadOptions;
+
+import org.springframework.context.annotation.*;
+import org.springframework.web.bind.annotation.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.json.JsonMapper.Builder;
+import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
 import java.io.IOException;
 import java.net.URL;
 import java.time.*;
+import tech.tablesaw.api.Table;
+import tech.tablesaw.io.csv.CsvReadOptions;
 
 @SpringBootApplication
 public class JjlzApplication {
@@ -21,7 +28,7 @@ public class JjlzApplication {
 //		if (sc.nextLine() == "1"){
 //			UserService userService = null;
 //			System.out.println(userService.totalBalance(me));
-		ZoneOffset zone = ZoneOffset.of("Z");
+/*		ZoneOffset zone = ZoneOffset.of("Z");
 		LocalDateTime d3 = LocalDateTime.parse("2020-12-10T00:00:00.00");
 		LocalDateTime d4 = LocalDateTime.parse("2021-12-10T00:00:00.0");
 //		LocalDateTime d1 = LocalDateTime.of(2020,12,10,19,10);
@@ -42,7 +49,16 @@ public class JjlzApplication {
 			System.out.println(table2);
 		}catch (Exception e){
 			e.printStackTrace();
-		}
+		}*/
 		//System.out.printf("The date is %s Time: %s \n seconds: %d",d1,t1,sec);//+seconds);
-		}
+	}
+
+/*        @Bean
+        @Primary
+        public ObjectMapper defaultMapper(Jackson2ObjectMapperBuilder builder) {
+                ObjectMapper objectMapper = builder.createXmlMapper(false).build();
+                objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+                return objectMapper;
+        }*/
+
 }

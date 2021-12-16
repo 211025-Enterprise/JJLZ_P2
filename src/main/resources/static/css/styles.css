@@ -278,3 +278,9 @@ p[id^='register-'] {
 #content-wrapper.userpage {
 	display: block !important;
 }
+
+#stockChart {
+	width: 400px;
+	height: 300px;
+	z-index: 10;
+}
