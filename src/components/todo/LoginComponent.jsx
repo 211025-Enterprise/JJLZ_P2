@@ -44,8 +44,10 @@ class LoginComponent extends Component {
            }).catch(() => 
            alert("User not exsit"),  
             this.refreshPage()
-           )             
+           )
+                         
     }
+
      refreshPage() {
         window.location.reload(false);
       }

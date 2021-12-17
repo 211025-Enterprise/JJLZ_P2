@@ -15,12 +15,13 @@ class HeaderComponent extends Component {
                     {<Link className="nav-link navbar-brand" to="/jjlz">JJLZ</Link>}
                     <ul className="navbar-nav">
                         {isUserLoggedIn && <li><Link className="nav-link text-dark" to="/welcome/JJLZ">Home</Link></li>}
+                        {!isUserLoggedIn && <li><Link className="nav-link text-dark" to="/welcome">Home</Link></li>}
                         {isUserLoggedIn && <li><Link className="nav-link text-dark" to="/watchlist">Watch List</Link></li>}
                         {isUserLoggedIn && <li><Link className="nav-link text-dark" to="/userDetail">UserDetail</Link></li>}
                         {isUserLoggedIn && <li><Link className="nav-link text-dark" to="/stock">Stock_Symbol</Link></li>}
                     </ul>
                     <ul className="navbar-nav navbar-collapse justify-content-end">
-                    {<li><Link className="nav-link text-dark" to="/register">Register</Link></li>}
+                        {!isUserLoggedIn &&<li><Link className="nav-link text-dark" to="/register">Register</Link></li>}
                         {!isUserLoggedIn && <li><Link className="nav-link text-dark" to="/login">Login</Link></li>}
                         {isUserLoggedIn && <li><Link className="nav-link text-dark" to="/logout" onClick={AuthenticationService.logout}>Logout</Link></li>}
                     </ul>

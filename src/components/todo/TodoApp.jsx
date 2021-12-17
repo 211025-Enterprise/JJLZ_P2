@@ -22,7 +22,8 @@ class TodoApp extends Component {
                     <>
                         <HeaderComponent/>
                         <Switch>
-                            <Route path="/" exact component={WelcomeComponent}/>                      
+                            <Route path="/" exact component={WelcomeComponent}/>  
+                            <Route path="/welcome" exact component={WelcomeComponent}/>                     
                             <Route path="/register" component={RegistrationComponent}/>
                             <Route path="/login" component={LoginComponent}/>
                             <Route path="/jjlz" component={JJLZ}/>
