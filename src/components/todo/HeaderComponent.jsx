@@ -16,6 +16,7 @@ class HeaderComponent extends Component {
                         {isUserLoggedIn && <li><Link className="nav-link" to="/welcome/JJLZ">Home</Link></li>}
                         {isUserLoggedIn && <li><Link className="nav-link" to="/todos">Watch List</Link></li>}
                         {isUserLoggedIn && <li><Link className="nav-link" to="/userDetail">UserDetail</Link></li>}
+                        {isUserLoggedIn && <li><Link className="nav-link" to="/stock">Stock_Symbol</Link></li>}
                     </ul>
                     <ul className="navbar-nav navbar-collapse justify-content-end">
                     {<li><Link className="nav-link" to="/register">Register</Link></li>}
@@ -27,5 +28,4 @@ class HeaderComponent extends Component {
         )
     }
 }
-
 export default HeaderComponent

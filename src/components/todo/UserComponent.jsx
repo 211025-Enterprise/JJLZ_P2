@@ -14,7 +14,7 @@ componentDidMount(){
 this.getUser();
 }
 getUser(){
-    axios.get('http://localhost:8080/users')
+    axios.get("http://localhost:8080/users")
     //.then(response => console.log(response.data))
     .then(response => response.data)
     .then((response) => {

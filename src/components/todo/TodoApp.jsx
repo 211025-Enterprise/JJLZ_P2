@@ -10,6 +10,7 @@ import LogoutComponent from './LogoutComponent.jsx'
 import WelcomeComponent from './WelcomeComponent.jsx'
 import RegistrationComponent from './RegistrationComponent.jsx'
 import UserComponent from './UserComponent.jsx'
+import StockComponent from './StockComponent.jsx'
 //import SearchBar from './SearchBar.jsx'
 
 class TodoApp extends Component {
@@ -24,6 +25,7 @@ class TodoApp extends Component {
                             <Route path="/register" component={RegistrationComponent}/>
                             <Route path="/login" component={LoginComponent}/>
                             <Route path="/userDetail" component={UserComponent}/>
+                            <Route path="/stock" component={StockComponent}/>
                             <AuthenticatedRoute path="/welcome/:name" component={WelcomeComponent}/>
                             <AuthenticatedRoute path="/todos" component={WatchListComponent}/>
                             <AuthenticatedRoute path="/logout" component={LogoutComponent}/>

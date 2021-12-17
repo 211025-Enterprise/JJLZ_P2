@@ -56,7 +56,7 @@ class LoginComponent extends Component {
             <div>
                 <h1>Login</h1>
                 <div className="container">
-                <form onSubmit={this.handleSubmit} >
+                <form>
                     {/*<ShowInvalidCredentials hasLoginFailed={this.state.hasLoginFailed}/>*/}
                     {/* {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
                     {this.state.showSuccessMessage && <div>Login Sucessful</div>} */}
