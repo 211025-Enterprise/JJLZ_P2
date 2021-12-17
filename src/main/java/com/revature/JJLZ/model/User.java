@@ -39,10 +39,10 @@ public class User {
     @JsonManagedReference
     public List<Stocks> holding;
 
-
     @OneToMany(mappedBy = "watcher",
                                     cascade = CascadeType.ALL)
     @JsonManagedReference
     public List<StockWatchlist> userWatchList;
+
 
 }

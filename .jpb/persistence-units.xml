@@ -4,7 +4,7 @@
     <persistence-units>
       <persistence-unit name="Default">
         <packages>
-          <package value="com.example.zozo" />
+          <package value="com.revature.JJLZ" />
         </packages>
       </persistence-unit>
     </persistence-units>

@@ -1,6 +1,5 @@
 package com.revature.JJLZ.model;
 
-
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -11,5 +10,4 @@ import lombok.Setter;
 public class AuthenToken {
     private String auth_token; // token used to authenticate logged in users
     private int exp; // amount of time the token will expire in
-
 }

@@ -7,6 +7,9 @@
 		<title>JJLZ Algos</title>
 		<link rel="icon" type="image/png" href="/img/icon.png">
 		<link rel="stylesheet" href="css/styles.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 		<script src="/js/common.js"></script>
 		<script src="/js/userhome.js"></script>
 	</head>
@@ -17,9 +20,9 @@
 			<div id="logo-text">JJLZ Algos</div>
 			<div id="margin"></div>
 			<div class="dropdown" id="account">
-				<div class="dropbtn" id="settingsBtn">My Account</div>
+				<div class="dropbtn" id="settingsBtn"></div>
 				<div id="settingsDropdown" class="dropdown-content">
-					<div>Log Out</div>
+					<div id="logOutBtn">Log Out</div>
 				</div>
 			</div>
 		</div>
@@ -27,6 +30,8 @@
 			<div id="accountsummary"></div>
 			<div id="stocksummary"></div>
 			<div id="watchlistsummary"></div>
+			<div id="buyBtn">BUY BUY BUY</div>
+			<canvas id="stockChart"></canvas>
 		</div>
 	</body>
 </html>

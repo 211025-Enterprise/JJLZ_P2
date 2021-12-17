@@ -2,10 +2,7 @@ package com.revature.JJLZ.service;
 
 
 import com.revature.JJLZ.model.StockWatchlist;
-import com.revature.JJLZ.model.StockWatchlist;
-import com.revature.JJLZ.model.StockWatchlist;
 import com.revature.JJLZ.model.User;
-import com.revature.JJLZ.repository.StockRepository;
 import com.revature.JJLZ.repository.UserRepository;
 import com.revature.JJLZ.repository.WatchlistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,9 +48,7 @@ public class WatchlistService {
     public List<StockWatchlist> getAllStocksByWatcher(Integer userId){
         return watchlistRepository.findAllByWatcher_UserId(userId);
     }
-    public List<StockWatchlist> getAllStocksByWatcher(){
-        return watchlistRepository.findAllByWatcher_UserId(1);
-    }
+
     public BigDecimal findPrice(final StockWatchlist stock) throws IOException {
         return getStockByName(stock.getStockName()).getQuote().getPrice();
     }
@@ -89,9 +84,9 @@ public class WatchlistService {
         watchlist.setWatcher(user);
         watchlistRepository.delete(watchlist);
         user.userWatchList.remove(watchlist);
+      
 
     }
-
 
 
 }
