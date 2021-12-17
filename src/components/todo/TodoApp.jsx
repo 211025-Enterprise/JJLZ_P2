@@ -11,6 +11,7 @@ import WelcomeComponent from './WelcomeComponent.jsx'
 import RegistrationComponent from './RegistrationComponent.jsx'
 import UserComponent from './UserComponent.jsx'
 import StockComponent from './StockComponent.jsx'
+import JJLZ from './JJLZ.jsx'
 //import SearchBar from './SearchBar.jsx'
 
 class TodoApp extends Component {
@@ -21,13 +22,14 @@ class TodoApp extends Component {
                     <>
                         <HeaderComponent/>
                         <Switch>
-                            <Route path="/" exact component={LoginComponent}/>
+                            <Route path="/" exact component={WelcomeComponent}/>                      
                             <Route path="/register" component={RegistrationComponent}/>
                             <Route path="/login" component={LoginComponent}/>
+                            <Route path="/jjlz" component={JJLZ}/>
                             <Route path="/userDetail" component={UserComponent}/>
                             <Route path="/stock" component={StockComponent}/>
                             <AuthenticatedRoute path="/welcome/:name" component={WelcomeComponent}/>
-                            <AuthenticatedRoute path="/todos" component={WatchListComponent}/>
+                            <AuthenticatedRoute path="/watchlist" component={WatchListComponent}/>
                             <AuthenticatedRoute path="/logout" component={LogoutComponent}/>
                             <Route component={ErrorComponent}/>
                         </Switch>

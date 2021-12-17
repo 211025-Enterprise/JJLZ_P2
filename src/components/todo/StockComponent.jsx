@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Plot from 'react-plotly.js';
-//import SearchBar from './SearchBar';
+import SearchBar from './SearchBar';
 class StockComponent extends Component {
   constructor(props) {
     super(props);
@@ -71,14 +71,14 @@ class StockComponent extends Component {
   }
   
 }
-function SearchBar(){
+// function SearchBar(){
 
-  return (<form action="https://google.com/search" method="get" align="center">
-  <label htmlFor="header-search">
-      <span className="visually-hidden" > Search Stock Name</span>
-  </label>
-  <input  type="text"  id="header-search"  placeholder="Enter Stock Name"  name="s" />
-  <button type="submit">Search</button>
-  </form>)
-  }
+//   return (<form action="/stock" method="get" align="center">
+//   <label htmlFor="header-search">
+//       <span className="visually-hidden" > Search Stock Name</span>
+//   </label>
+//   <input  type="text"  id="header-search"  placeholder="Enter Stock Name"  name="s" />
+//   <button type="submit">Search</button>
+//   </form>)
+//   }
 export default StockComponent;

@@ -29,23 +29,22 @@ class LoginComponent extends Component {
             username: "",
             password: ""
        }
-      
     login() {
+        this.props.history.push(`/welcome/${this.state.username}`)
         const loggedUser = {
             username: this.state.username,
             password: this.state.password
-           }
+           }  
            axios.post('http://localhost:8080/logged', loggedUser)
           .then((response) => {
               if(response.data != null)
-              AuthenticationService.registerSuccessfulLogin(this.state.username,this.state.password)   
+              AuthenticationService.registerSuccessfulLogin(this.state.username,this.state.password)  
                 this.setState(this.initialState)     
                alert("You have logged in Successfully")                
            }).catch(() => 
            alert("User not exsit"),  
             this.refreshPage()
-           )
-           this.props.history.push(`/welcome/${this.state.username}`)                 
+           )             
     }
      refreshPage() {
         window.location.reload(false);
@@ -56,7 +55,7 @@ class LoginComponent extends Component {
             <div>
                 <h1>Login</h1>
                 <div className="container">
-                <form>
+                <form onSubmit={this.handleSubmit} >
                     {/*<ShowInvalidCredentials hasLoginFailed={this.state.hasLoginFailed}/>*/}
                     {/* {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
                     {this.state.showSuccessMessage && <div>Login Sucessful</div>} */}

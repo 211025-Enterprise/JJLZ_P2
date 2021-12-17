@@ -2,7 +2,7 @@ import React from 'react'
 //import '../../App.css' 
 function SearchBar(){
 
-    return (<form action="https://google.com/search" method="get" align="center">
+    return (<form action="/stock" method="get" align="center">
     <label htmlFor="header-search">
         <span className="visually-hidden" > Search Stock Name</span>
     </label>
