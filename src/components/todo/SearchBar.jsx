@@ -9,7 +9,7 @@ function SearchBar(){
     <input
         type="text"
         id="header-search"
-        placeholder="Search blog posts"
+        placeholder="Enter Stock Name"
         name="s" 
     />
     <button type="submit">Search</button>
