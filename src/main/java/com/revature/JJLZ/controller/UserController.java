@@ -29,7 +29,7 @@ public class UserController {
     private JwtUtil jwtHandler;
 
 
-//    @GetMapping
+    //    @GetMapping
 //    public ResponseEntity<?> getAllUsers(){
 //        return ResponseEntity.ok(userService.getAllUsers());
 //    }
@@ -48,7 +48,7 @@ public class UserController {
         User theUser = userService.getAllUsers().get(Integer.parseInt(userId));
         if ( theUser == null ) // if null will throw exception
             throw new UserNotFoundException("User id not found - " + userId);
-            return userService.findUserById(Integer.parseInt(userId));
+        return userService.findUserById(Integer.parseInt(userId));
     }
     @GetMapping("/totalvalue")
     public ResponseEntity<?> getTotalValue(@RequestParam("userId") Integer userId) throws IOException {
@@ -61,7 +61,7 @@ public class UserController {
     }
     @PutMapping
     public User updateUser(@RequestBody User user){
-       return userService.update(user);
+        return userService.update(user);
     }
 
     @DeleteMapping("/{userId}")

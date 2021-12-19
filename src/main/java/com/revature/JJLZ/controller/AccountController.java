@@ -27,7 +27,9 @@ import tech.tablesaw.io.csv.CsvReadOptions;
 import tech.tablesaw.io.json.JsonWriteOptions;
 
 @RestController
+
 @CrossOrigin(origins = "http://localhost:3000")
+
 public class AccountController {
 	@Autowired
 	private UserService userService;
