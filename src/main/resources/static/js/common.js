@@ -123,6 +123,8 @@ function createStockCard (ticker, id, parent, amount, _callback) {
 	axios.request(options).then(function (response) {
 		var card = document.createElement('div')
 		card.setAttribute('id', id)
+		card.setAttribute('class', 'stockCard')
+		card.setAttribute('class', 'selem')
 
 		var cardTitle = document.createElement('p')
 		cardTitle.setAttribute('class', 'cardTitle')
@@ -179,6 +181,7 @@ function createStockChart (ticker, range, interval, id, parent, _callback) {
 		var chart = document.createElement('canvas')
 		chart.setAttribute('id', id)
 		chart.setAttribute('class', 'stockChart')
+		chart.setAttribute('class', 'selem')
 		parent.appendChild(chart)
 
 		var newChart = new Chart(id, {
@@ -191,8 +194,9 @@ function createStockChart (ticker, range, interval, id, parent, _callback) {
 				datasets: [{
 					fill: false,
 					lineTension: 0,
+					borderWidth: 30,
 					backgroundColor: "rgba(0,0,255,1.0)",
-					borderColor: "rgba(0,0,255,0.1)",
+					borderColor: "rgba(0,0,255,0.6)",
 					data: response.data[ticker]['close']
 				}]
 			},
@@ -201,7 +205,22 @@ function createStockChart (ticker, range, interval, id, parent, _callback) {
 					display: false
 				},
 				scales: {
-					yAxes: [{ticks: {min: Math.min(...response.data[ticker]['close']), max: Math.max(...response.data[ticker]['close'])}}]
+					yAxes: [{
+						ticks: {
+							min: Math.min(...response.data[ticker]['close']),
+							max: Math.max(...response.data[ticker]['close']),
+							fontColor: "darkblue",
+							fontSize: 36,
+							usePointStyle: true
+						}
+					}],
+					xAxes: [{
+						ticks: {
+							fontColor: "darkblue",
+							fontSize: 36,
+							usePointStyle: true
+						}
+					}]
 				}
 			}
 		})

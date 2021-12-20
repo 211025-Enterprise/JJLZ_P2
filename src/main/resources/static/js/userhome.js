@@ -60,6 +60,7 @@ $.ajax({
 		logOut()
 	}
 })
+
 /*
 $.ajax({
 	type: "POST",
@@ -99,6 +100,7 @@ window.addEventListener("load", function() {
 	if (fullName) {
 		document.getElementById('settingsBtn').innerHTML = fullName
 	}
+	displayAccount()
 /*	if (totalValue) {
 		document.getElementById('accountsummary').innerHTML = "Net Worth: $" + totalValue
 	}
@@ -138,17 +140,21 @@ function logOut () {
 
 function displayAccount () {
 	removeAllChildNodes(contentWrapper)
+	var accountWrapper = document.createElement('p')
+	accountWrapper.setAttribute('id', 'accountWrapper')
+	accountWrapper.setAttribute('class', 'selem')
 	getTotalValue().then(function(result) {
 		var netWorth = document.createElement('p')
 		netWorth.setAttribute('id', 'netWorth')
 		netWorth.innerHTML = "Net Worth: $" + result
-		contentWrapper.appendChild(netWorth)
+		accountWrapper.appendChild(netWorth)
+		contentWrapper.appendChild(accountWrapper)
 	})
 	getBalance().then(function(result) {
 		var balance = document.createElement('p')
 		balance.setAttribute('id', 'cashBalance')
 		balance.innerHTML = "Liquid Assets: $" + result
-		contentWrapper.appendChild(balance)
+		accountWrapper.appendChild(balance)
 	})
 }
 
@@ -157,6 +163,7 @@ function displayStocks () {
 
 	var buyStockWrapper = document.createElement('div')
 	buyStockWrapper.setAttribute('id', 'buyStockWrapper')
+	buyStockWrapper.setAttribute('class', 'selem')
 	createInput('text', 'stock-name', buyStockWrapper, "Stock ID:")
 	createInput('text', 'stock-amount', buyStockWrapper, "Quantity:")
 
@@ -222,6 +229,7 @@ function displayWatchlist () {
 
 	var searchStockWrapper = document.createElement('div')
 	searchStockWrapper.setAttribute('id', 'searchStockWrapper')
+	searchStockWrapper.setAttribute('class', 'selem')
 	createInput('text', 'search-name', searchStockWrapper, "Stock ID:")
 
 	var searchStockBtn = document.createElement('div')

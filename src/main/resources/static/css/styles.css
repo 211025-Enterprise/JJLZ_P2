@@ -168,6 +168,7 @@ p[id^='register-'] {
 #buyStockBtn {
 	cursor: pointer;
 	text-align: center;
+	width: 100px;
 }
 
 #buyStockBtn::before {
@@ -325,7 +326,37 @@ p[id^='register-'] {
 }*/
 
 #stockChart {
-	width: 800px !important;
-	height: 600px !important;
+	width: 700px !important;
+	height: 500px !important;
 	z-index: 10;
+	padding: 60px;
+	margin: 20px;
+}
+
+.selem {
+	background-image: url('/img/element-background.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 20px;
+	margin: 20px;
+}
+
+#accountWrapper {
+	width: 40vw;
+	height: 20vw;
+}
+
+.stockCard {
+	text-align: center;
+}
+
+#stocklistWrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
 }

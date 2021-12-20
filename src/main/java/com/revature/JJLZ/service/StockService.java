@@ -18,8 +18,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
-
+import java.util.stream.*;
 
 
 @Service
@@ -92,16 +91,18 @@ public class StockService {
             //if not have add to list
             List<Stocks> stonks;
             stonks = getAllStocksByUser(user.getUserId());
-            if (stonks.contains(stock)){
-                stock.setQuantity(stock.getQuantity()+amount);
+	    List<String> stockNames = stonks.stream().map(s -> s.getName()).collect(Collectors.toList());
+            if (stockNames.contains(stockname)){
+		int stockQuantity = stonks.get(stockNames.indexOf(stockname)).getQuantity();
+                stock.setQuantity(stockQuantity+amount);
                 //System.out.println(stock.getQuantity()+"   "+stock.getHolder());
 
 //                System.out.println("new balance: " + user.getBalance());
 //                System.out.println(user.getFirstName()+"bought: " + amount + " of stock: "+  stock);
             }
             else{
-                user.holding.add(stock);
                 stock.setQuantity(amount);
+                user.holding.add(stock);
 //                System.out.println(stock.getQuantity()+" asdasd  "+stock.getHolder());
 //                System.out.println(user.getFirstName()+"bought: " + amount + " of stock: "+  stock);
             }
