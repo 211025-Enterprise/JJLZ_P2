@@ -1,7 +1,8 @@
 var totalValue
 var fullName
+var contentWrapper
 
-getStockHistory('AMZN', (stockhistory) => {
+/*getStockHistory('AMZN', (stockhistory) => {
 	console.log(stockhistory)
 	new Chart('stockChart', {
 		type: "line",
@@ -42,7 +43,7 @@ $.ajax({
 		logOut()
 	}
 })
-
+*/
 $.ajax({
 	type: "POST",
 	contentType: "application/json",
@@ -59,7 +60,7 @@ $.ajax({
 		logOut()
 	}
 })
-
+/*
 $.ajax({
 	type: "POST",
 	contentType: "application/json",
@@ -86,15 +87,19 @@ $.ajax({
 	error: function (e) {
 		logOut()
 	}
-})
+})*/
 
 window.addEventListener("load", function() {
+	contentWrapper = document.getElementById('content-wrapper')
 	document.getElementById('settingsBtn').onclick = function() {showSettings()}
 	document.getElementById('logOutBtn').onclick = function() {logOut()}
+	document.getElementById('accountBtn').onclick = function() {displayAccount()}
+	document.getElementById('stocksBtn').onclick = function() {displayStocks()}
+	document.getElementById('watchlistBtn').onclick = function() {displayWatchlist()}
 	if (fullName) {
 		document.getElementById('settingsBtn').innerHTML = fullName
 	}
-	if (totalValue) {
+/*	if (totalValue) {
 		document.getElementById('accountsummary').innerHTML = "Net Worth: $" + totalValue
 	}
 	document.getElementById('buyBtn').onclick = function () {
@@ -106,7 +111,7 @@ window.addEventListener("load", function() {
 			var stocklist = JSON.parse(result)
 			console.log(stocklist)
 		})
-	}
+	}*/
 })
 
 function showSettings () {
@@ -129,4 +134,106 @@ window.onclick = function (event) {
 function logOut () {
 	window.localStorage.removeItem("accountToken")
 	window.location.replace("http://krakenmeister.com:8080")
+}
+
+function displayAccount () {
+	removeAllChildNodes(contentWrapper)
+	getTotalValue().then(function(result) {
+		var netWorth = document.createElement('p')
+		netWorth.setAttribute('id', 'netWorth')
+		netWorth.innerHTML = "Net Worth: $" + result
+		contentWrapper.appendChild(netWorth)
+	})
+	getBalance().then(function(result) {
+		var balance = document.createElement('p')
+		balance.setAttribute('id', 'cashBalance')
+		balance.innerHTML = "Liquid Assets: $" + result
+		contentWrapper.appendChild(balance)
+	})
+}
+
+function displayStocks () {
+	removeAllChildNodes(contentWrapper)
+
+	var buyStockWrapper = document.createElement('div')
+	buyStockWrapper.setAttribute('id', 'buyStockWrapper')
+	createInput('text', 'stock-name', buyStockWrapper, "Stock ID:")
+	createInput('text', 'stock-amount', buyStockWrapper, "Quantity:")
+
+	var buyControl = document.createElement('div')
+	buyControl.setAttribute('id', 'buyControl')
+
+	var buyStockBtn = document.createElement('div')
+	buyStockBtn.setAttribute('id', 'buyStockBtn')
+	buyStockBtn.onclick = () => {
+		var stock = document.getElementById('stock-name').value
+		var quantity = document.getElementById('stock-amount').value
+		buyStock(stock, quantity).then(function (response) {
+			document.getElementById('stocklistWrapper').remove()
+			var stocklistWrapper = document.createElement('div')
+			stocklistWrapper.setAttribute('id', 'stocklistWrapper')
+			getStocklist().then(function(result) {
+				var stocklist = JSON.parse(result)
+				for (var i=0; i<stocklist.length; i++) {
+					createStockCard(stocklist[i].name, "stockCard" + i, stocklistWrapper, stocklist[i].quantity, () => {})
+				}
+				contentWrapper.appendChild(stocklistWrapper)
+			})
+		})
+	}
+
+	var sellStockBtn = document.createElement('div')
+	sellStockBtn.setAttribute('id', 'sellStockBtn')
+	sellStockBtn.onclick = () => {
+		var stock = document.getElementById('stock-name').value
+		var quantity = document.getElementById('stock-amount').value
+		sellStock(stock, quantity).then(function (response) {
+			document.getElementById('stocklistWrapper').remove()
+			var stocklistWrapper = document.createElement('div')
+			stocklistWrapper.setAttribute('id', 'stocklistWrapper')
+			getStocklist().then(function(result) {
+				var stocklist = JSON.parse(result)
+				for (var i=0; i<stocklist.length; i++) {
+					createStockCard(stocklist[i].name, "stockCard" + i, stocklistWrapper, stocklist[i].quantity, () => {})
+				}
+				contentWrapper.appendChild(stocklistWrapper)
+			})
+		})
+	}
+
+	buyControl.appendChild(buyStockBtn)
+	buyControl.appendChild(sellStockBtn)
+	buyStockWrapper.appendChild(buyControl)
+	contentWrapper.appendChild(buyStockWrapper)
+
+	var stocklistWrapper = document.createElement('div')
+	stocklistWrapper.setAttribute('id', 'stocklistWrapper')
+	getStocklist().then(function(result) {
+		var stocklist = JSON.parse(result)
+		for (var i=0; i<stocklist.length; i++) {
+			createStockCard(stocklist[i].name, "stockCard" + i, stocklistWrapper, stocklist[i].quantity, () => {})
+		}
+		contentWrapper.appendChild(stocklistWrapper)
+	})
+}
+
+function displayWatchlist () {
+	removeAllChildNodes(contentWrapper)
+
+	var searchStockWrapper = document.createElement('div')
+	searchStockWrapper.setAttribute('id', 'searchStockWrapper')
+	createInput('text', 'search-name', searchStockWrapper, "Stock ID:")
+
+	var searchStockBtn = document.createElement('div')
+	searchStockBtn.setAttribute('id', 'searchStockBtn')
+	searchStockBtn.onclick = () => {
+		var stock = document.getElementById('search-name').value
+		if (document.getElementById('stockChart')) {
+			document.getElementById('stockChart').remove()
+		}
+		createStockChart(stock, '3mo', '1wk', 'stockChart', contentWrapper, () => {})
+	}
+
+	searchStockWrapper.appendChild(searchStockBtn)
+	contentWrapper.appendChild(searchStockWrapper)
 }

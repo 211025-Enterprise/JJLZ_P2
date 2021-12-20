@@ -159,6 +159,51 @@ p[id^='register-'] {
 	grid-auto-columns: 1fr;
 }
 
+#buyControl {
+	display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: 1fr;
+}
+
+#buyStockBtn {
+	cursor: pointer;
+	text-align: center;
+}
+
+#buyStockBtn::before {
+	content: "Buy";
+}
+
+#buyStockBtn:hover {
+	text-shadow: 0 0 0.9rem white, 0 0 0.9rem white, 0 0 0.9rem white, 0 0 0.9rem white;
+}
+
+#sellStockBtn {
+	cursor: pointer;
+	text-align: center;
+}
+
+#sellStockBtn::before {
+	content: "Sell";
+}
+
+#sellStockBtn:hover {
+	text-shadow: 0 0 0.9rem white, 0 0 0.9rem white, 0 0 0.9rem white, 0 0 0.9rem white;
+}
+
+#searchStockBtn {
+	cursor: pointer;
+	text-align: center;
+}
+
+#searchStockBtn::before {
+	content: "Search";
+}
+
+#searchStockBtn:hover {
+	text-shadow: 0 0 0.9rem white, 0 0 0.9rem white, 0 0 0.9rem white, 0 0 0.9rem white;
+}
+
 /*#submit::before {
 	content: "Submit";
 }*/
@@ -275,12 +320,12 @@ p[id^='register-'] {
 	font-size: 2.5rem;
 }
 
-#content-wrapper.userpage {
+/*#content-wrapper.userpage {
 	display: block !important;
-}
+}*/
 
 #stockChart {
-	width: 400px;
-	height: 300px;
+	width: 800px !important;
+	height: 600px !important;
 	z-index: 10;
 }

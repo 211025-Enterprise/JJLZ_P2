@@ -60,33 +60,6 @@ function goHome() {
 	document.getElementById('logIn').onclick = function() {logInForm()}
 }
 
-function removeAllChildNodes(parent) {
-	while (parent.firstChild) {
-		parent.removeChild(parent.firstChild)
-	}
-}
-
-function newElement(type, id, parent) {
-	var element = document.createElement(type)
-	element.setAttribute('id', id)
-	parent.appendChild(element)
-}
-
-function createInput(type, id, formElement, labelString) {
-	var textWrapper = document.createElement('span')
-	textWrapper.setAttribute('class', 'inputWrapper')
-	var textField = document.createElement('input')
-	textField.setAttribute('type', type)
-	textField.setAttribute('id', id)
-	textField.setAttribute('name', id)
-	var textLabel = document.createElement('label')
-	textLabel.setAttribute('for', id)
-	textLabel.innerHTML = labelString
-	textWrapper.appendChild(textLabel)
-	textWrapper.appendChild(textField)
-	formElement.appendChild(textWrapper)
-}
-
 function addBlurryBackground(formElement, parentElement) {
 	var rect = formElement.getBoundingClientRect()
 	var formBackground = document.createElement('div')

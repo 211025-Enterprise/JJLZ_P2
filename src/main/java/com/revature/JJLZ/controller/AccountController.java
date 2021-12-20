@@ -69,6 +69,16 @@ public class AccountController {
 		}
 	}
 
+	@PostMapping("cashbalance")
+	public ResponseEntity<String> getCashBalance(@RequestHeader (name="Authorization") String token) throws IOException {
+		User u = authorizeToken(token);
+		if (u != null) {
+			return ResponseEntity.status(HttpStatus.OK).body(String.valueOf(u.getBalance()));
+		} else {
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).body("invalid");
+		}
+	}
+
 	@PostMapping("totalvalue")
 	public ResponseEntity<String> getTotalValue(@RequestHeader (name="Authorization") String token) throws IOException {
 		User u = authorizeToken(token);
