@@ -6,9 +6,6 @@ class RegistrationComponent extends Component {
     constructor(props) {
         super(props)
         this.state = this.initialState
-        this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.register = this.register.bind(this)
     }
 
    initialState={
@@ -18,7 +15,7 @@ class RegistrationComponent extends Component {
     password: ''
    }
 
-   register(){
+   register = () =>{
     const user = {
         firstName: this.state.firstName,
         lastName: this.state.lastName,
@@ -29,13 +26,13 @@ class RegistrationComponent extends Component {
       .then((response) => {
           if(response.data != null)
             this.setState(this.initialState)
+            this.props.history.push('/login')
             alert("User Created Successfully")
-       })
-       this.props.history.push('/login') 
+       })      
    }
 
 
-    handleChange(event) {
+    handleChange = (event)=> {
         //console.log(this.state);
         this.setState(
             {
@@ -44,11 +41,11 @@ class RegistrationComponent extends Component {
             }
         )
     }
-    handleSubmit(event) {
+    handleSubmit=(event)=> {
         // Process submit from this.state
         event.preventDefault(); // Need to stop DOM from generating a POST
         }
-    render() {
+    render=()=> {
         return (
             <div>
                 <h1>Registration</h1>

@@ -5,63 +5,54 @@ class LoginComponent extends Component {
     
     constructor(props) {
         super(props)
-        
         this.state = this.initialState
-        this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.login = this.login.bind(this)
-        this.refreshPage = this.refreshPage.bind(this)
     }
 
-    handleChange(event) {
+    handleChange = (e) => {
         this.setState(
             {
-                [event.target.name]
-                  :event.target.value
+                [e.target.name]
+                  :e.target.value
             }
         )
     }
-    handleSubmit(event) {
+
+    handleSubmit= (e)=> {
         // Process submit from this.state
-        event.preventDefault(); // Need to stop DOM from generating a POST
+        e.preventDefault(); // Need to stop DOM from generating a POST
         }
     initialState={
             username: "",
             password: ""
        }
-    login() {
-        this.props.history.push(`/welcome/${this.state.username}`)
+    login = ()=> {
+       this.props.history.push(`/welcome/${this.state.username}`)
         const loggedUser = {
             username: this.state.username,
             password: this.state.password
            }  
-           axios.post('http://localhost:8080/logged', loggedUser)
+           axios.post('http://localhost:8080/logged', loggedUser) 
           .then((response) => {
               if(response.data != null)
-              AuthenticationService.registerSuccessfulLogin(this.state.username,this.state.password)  
+              AuthenticationService.registerSuccessfulLogin(response.data)
                 this.setState(this.initialState)     
                alert("You have logged in Successfully")                
            }).catch(() => 
            alert("User not exsit"),  
-            this.refreshPage()
-           )
-                         
+             this.refreshPage()
+           )                  
     }
 
-     refreshPage() {
-        window.location.reload(false);
-      }
+      refreshPage = () => {
+         window.location.reload(false);
+       }
     
-    render() {
+    render = () => {
         return (
             <div>
                 <h1>Login</h1>
                 <div className="container">
-                <form onSubmit={this.handleSubmit} >
-                    {/*<ShowInvalidCredentials hasLoginFailed={this.state.hasLoginFailed}/>*/}
-                    {/* {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
-                    {this.state.showSuccessMessage && <div>Login Sucessful</div>} */}
-                    {/*<ShowLoginSuccessMessage showSuccessMessage={this.state.showSuccessMessage}/>*/}
+                <form onSubmit={this.handleSubmit}>
                     UserName: <input type="text" name="username" value={this.state.username} placeholder='Enter username' onChange={this.handleChange}/>
                     Password: <input type="password" name="password" value={this.state.password} placeholder='Enter password' onChange={this.handleChange}/>
                     <button className="btn btn-success " onClick={this.login} >Login</button><br />

@@ -1,17 +1,18 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom';
 import AuthenticationService from './AuthenticationService.js'
 
 
 class HeaderComponent extends Component {
     render() {
+    
         const isUserLoggedIn = AuthenticationService.isUserLoggedIn();
-        //console.log(isUserLoggedIn);
+        console.log(isUserLoggedIn);
 
         return (
+        
             <header>
                 <nav className="navbar navbar-expand-md navbar-dark bg-info">
-                    {/* <div><a href="http://www.GOOGLE.com" className="navbar-brand">JJLZ</a></div> */}
                     {<Link className="nav-link navbar-brand" to="/jjlz">JJLZ</Link>}
                     <ul className="navbar-nav">
                         {isUserLoggedIn && <li><Link className="nav-link text-dark" to="/welcome/JJLZ">Home</Link></li>}
@@ -30,4 +31,4 @@ class HeaderComponent extends Component {
         )
     }
 }
-export default HeaderComponent
+export default withRouter(HeaderComponent)

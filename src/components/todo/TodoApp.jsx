@@ -9,10 +9,11 @@ import FooterComponent from './FooterComponent.jsx'
 import LogoutComponent from './LogoutComponent.jsx'
 import WelcomeComponent from './WelcomeComponent.jsx'
 import RegistrationComponent from './RegistrationComponent.jsx'
-import UserComponent from './UserComponent.jsx'
+import UserDetailComponent from './UserDetailComponent.jsx'
 import StockComponent from './StockComponent.jsx'
 import JJLZ from './JJLZ.jsx'
 //import SearchBar from './SearchBar.jsx'
+import UpdateBalance from './UpdateBalance.jsx';
 
 class TodoApp extends Component {
     render() {
@@ -27,8 +28,9 @@ class TodoApp extends Component {
                             <Route path="/register" component={RegistrationComponent}/>
                             <Route path="/login" component={LoginComponent}/>
                             <Route path="/jjlz" component={JJLZ}/>
-                            <Route path="/userDetail" component={UserComponent}/>
+                            <Route path="/userDetail" component={UserDetailComponent}/>
                             <Route path="/stock" component={StockComponent}/>
+                            <Route path="/updateBalance" component={UpdateBalance}/>
                             <AuthenticatedRoute path="/welcome/:name" component={WelcomeComponent}/>
                             <AuthenticatedRoute path="/watchlist" component={WatchListComponent}/>
                             <AuthenticatedRoute path="/logout" component={LogoutComponent}/>
