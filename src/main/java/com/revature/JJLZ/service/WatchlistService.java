@@ -68,14 +68,14 @@ public class WatchlistService {
     }
 
     public void addStocktoWatchlist(String stockname, User user){
-        System.out.println("inside the method");
+        //System.out.println("inside the method");
         StockWatchlist watchlist = findStock(stockname);
         watchlist.setWatcher(user);
-        System.out.println("after watchlist ="+watchlist);
+        //System.out.println("after watchlist ="+watchlist);
         user.userWatchList.add(watchlist);
-        System.out.println("after add");
+        //System.out.println("after add");
         watchlistRepository.save(watchlist);
-        System.out.println("after save");
+        //System.out.println("after save");
 
     }
 
