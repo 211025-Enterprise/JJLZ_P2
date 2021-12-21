@@ -110,6 +110,33 @@ function sellStock (ticker, shares) {
 	})
 }
 
+function getStockPrices (tickers, _callback) {
+	const options = {
+		method: 'GET',
+		url: 'https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v6/finance/quote',
+		params: {symbols: tickers},
+		headers: {
+			'x-rapidapi-host': 'stock-data-yahoo-finance-alternative.p.rapidapi.com',
+			'x-rapidapi-key': '4aa500a931msh94e1a1ed0c77b04p1ff743jsn532bb2626c19'
+		}
+	}
+
+	if (tickers.length > 0) {
+		axios.request(options).then(function (response) {
+			var data = []
+			for (var i=0; i<response.data["quoteResponse"]["result"].length; i++) {
+				data.push(response.data["quoteResponse"]["result"][i]["ask"])
+			}
+			_callback(data)
+		}).catch(function (error) {
+			console.log(error)
+			_callback()
+		})
+	} else {
+		_callback([])
+	}
+}
+
 function createStockCard (ticker, id, parent, amount, _callback) {
 	const options = {
 		method: 'GET',

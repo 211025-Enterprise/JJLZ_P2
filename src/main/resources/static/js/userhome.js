@@ -143,7 +143,10 @@ function displayAccount () {
 	var accountWrapper = document.createElement('p')
 	accountWrapper.setAttribute('id', 'accountWrapper')
 	accountWrapper.setAttribute('class', 'selem')
+	var netWorthValue = 1
+	var liquidValue = 1
 	getTotalValue().then(function(result) {
+		netWorthValue = result
 		var netWorth = document.createElement('p')
 		netWorth.setAttribute('id', 'netWorth')
 		netWorth.innerHTML = "Net Worth: $" + result
@@ -151,10 +154,50 @@ function displayAccount () {
 		contentWrapper.appendChild(accountWrapper)
 	})
 	getBalance().then(function(result) {
+		liquidValue = result
 		var balance = document.createElement('p')
 		balance.setAttribute('id', 'cashBalance')
 		balance.innerHTML = "Liquid Assets: $" + result
 		accountWrapper.appendChild(balance)
+	})
+	getStocklist().then(function(result) {
+		var stocklist = JSON.parse(result)
+		var tickers = ''
+		for (var i=0; i<stocklist.length; i++) {
+			tickers += stocklist[i].name
+			if (i != stocklist.length - 1) {
+				tickers += ','
+			}
+		}
+		getStockPrices(tickers, function(result) {
+			var chartContainer = document.createElement('div')
+			chartContainer.setAttribute('id', 'chartContainer')
+			contentWrapper.appendChild(chartContainer)
+
+			var data = []
+			data.push({y: (liquidValue*100/netWorthValue).toFixed(2), label: 'Liquid'})
+			for (var i=0; i<stocklist.length; i++) {
+				data.push({y: ((result[i]*stocklist[i].quantity*100)/(netWorthValue)).toFixed(2), label: stocklist[i].name})
+			}
+
+			var chart = new CanvasJS.Chart('chartContainer', {
+				animationEnabled: true,
+				backgroundColor: "rgba(13.7, 41.2, 71, 0.5)",
+				title: {
+					text: "Asset Distribution",
+					fontColor: "rgba(1, 1, 1, 1)"
+				},
+				data: [{
+					type: "pie",
+					indexLabelFontColor: "rgba(1, 1, 1, 1)",
+					startAngle: 240,
+					yValueFormatString: "##0.00\"%\"",
+					indexLabel: "{label} {y}",
+					dataPoints: data
+				}]
+			})
+			chart.render()
+		})
 	})
 }
 

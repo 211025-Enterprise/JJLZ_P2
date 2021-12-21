@@ -330,7 +330,6 @@ p[id^='register-'] {
 	height: 500px !important;
 	z-index: 10;
 	padding: 60px;
-	margin: 20px;
 }
 
 .selem {
@@ -346,8 +345,8 @@ p[id^='register-'] {
 }
 
 #accountWrapper {
-	width: 40vw;
-	height: 20vw;
+	width: 250px;
+	height: 150px;
 }
 
 .stockCard {
@@ -360,3 +359,9 @@ p[id^='register-'] {
 	justify-content: center;
 	flex-direction: row;
 }
+
+#chartContainer {
+	width: 350px;
+	height: 200px;
+}
+
